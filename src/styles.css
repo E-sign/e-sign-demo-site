@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --light-blue: #99ccff;
+    --blue: #345eaf;
+    --dark-blue: #274d9e;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bg-light-blue{
+    background-color: var(--light-blue);
+}
+.bg-blue{
+    background-color: var(--blue);
+}
+.bg-dark-blue{
+    background-color: var(--dark-blue);
+}
+button{
+    padding: 10px 15px;
+    background-color: var(--dark-blue);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 100px;
+    outline: none;
+}
+
+button:focus{
+    outline: 0;
+}
+
+svg{
+    fill: var(--blue);
+}
