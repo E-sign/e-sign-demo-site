@@ -12,4 +12,11 @@ export class EmploymentLawComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  currentPage: string = "status"
+  numberOfDocsToSign: number = 0
+  documentsToSign: any = ['test']
+
+  openDocument(){
+    console.log('click')
+  }
 }

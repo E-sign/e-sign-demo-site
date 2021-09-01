@@ -1,1 +1,19 @@
-<p>employment-law works!</p>
+<div class="content">
+    <div class="status-page" *ngIf="currentPage == 'status'">
+        <div>
+            <p *ngIf="numberOfDocsToSign == 1">You have 1 document to sign</p>
+            <p *ngIf="numberOfDocsToSign != 1">You have {{numberOfDocsToSign}} documents to sign</p>
+        </div>
+        <div class="document-list">
+            <div class="document-item" *ngFor="let doc of documentsToSign">
+                <p>Document Name</p>
+                <p>Document thumbnail</p>
+                <button (click)="openDocument()">Click to View & Sign</button>
+            </div>
+        </div>
+    </div>
+    <div class="sign-page" *ngIf="currentPage == 'sign'">
+        <p>sign</p>
+    </div>
+
+</div>
