@@ -35,3 +35,15 @@ button:focus{
 svg{
     fill: var(--blue);
 }
+
+.content{
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}

@@ -18,6 +18,8 @@ export class CorprateLawComponent implements OnInit {
   currentPage: string = 'form'
   formNotComplete: boolean = true;
 
+  errorText: string = ''
+
   fileType: any;
   fileRawData: any;
   fileName: any;
@@ -57,22 +59,42 @@ export class CorprateLawComponent implements OnInit {
   }
 
   onAddSigner(){ 
-    let obj = {
-      name: this.SignerDetails.value.name,
-      email: this.SignerDetails.value.email
+    if(this.SignerDetails.value.name != "" && this.SignerDetails.value.email != "" && this.SignerDetails.value.name != null && this.SignerDetails.value.email != null){
+      this.errorText == ""
+      let obj = {
+        name: this.SignerDetails.value.name,
+        email: this.SignerDetails.value.email
+      }
+      this.WorkFlow.value.signers.push(obj)
+      this.SignerDetails.reset()
+      console.log(this.WorkFlow.value.signers)
+    } else if(this.SignerDetails.value.name == "" && this.SignerDetails.value.email == ""){
+      this.errorText = "Please add the signers name and email"
+    } else if (this.SignerDetails.value.name == ""){
+      this.errorText = "Please add the signers name"
+    } else if (this.SignerDetails.value.email == ""){
+      this.errorText = "Please add the signers email"
+    } else {
+      this.errorText = "Unknown error adding signer"
     }
-    this.WorkFlow.value.signers.push(obj)
-    this.SignerDetails.reset()
-    console.log(this.WorkFlow.value.signers)
   }
 
   checkFormFields(){
-    if(this.WorkFlow.value.document.title != {} 
+    if(this.WorkFlow.value.document != {} 
       && this.WorkFlow.value.signers.length >= 1){
         console.log('passed')
         this.changePage()
       } else {
-        console.log('error')
+        if(this.WorkFlow.value.document.title == undefined
+          && this.WorkFlow.value.signers.length == 0){
+            this.errorText = "Please select a document to sign and add at least one signer"
+        } else if(this.WorkFlow.value.document.title == undefined){
+          this.errorText = "Please select a document to sign"
+        } else if (this.WorkFlow.value.signers.length == 0){
+          this.errorText = "Please add at least one signer"
+        } else {
+          this.errorText = "Unknown Error"
+        }
       }
   }
 

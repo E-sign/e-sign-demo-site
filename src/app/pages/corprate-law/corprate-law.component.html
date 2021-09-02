@@ -1,7 +1,7 @@
 <div class="content">
     <div class="nav"></div>
     <div class="form-container" *ngIf="currentPage == 'form'">
-        <div class="modal-upload">
+        <div class="upload">
             <div class="options">
                 <div class="computer option">
                     <svg width="141" height="141" viewBox="0 0 141 141" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,8 +74,7 @@
                         <stop class="stop-color-1"/>
                         <stop offset="1" class="stop-color-2"/>
                         </linearGradient>
-                        </defs>
-                        </svg>
+                        </defs></svg>
                         
                     <button>Your Device</button>
                     <input type="file" class="file-input" (change)="onFileSelected($event)" accept=".png, .docx, .pdf, .doc, .rtf, .jpg, .jpeg" id="fileUpload">
@@ -110,6 +109,7 @@
         </div>
 
         <button (click)="checkFormFields()">nect</button>
+        <p>{{errorText}}</p>
     </div>
     <div class="form-container" *ngIf="currentPage == 'iframe'">
         <p>iframe</p>
