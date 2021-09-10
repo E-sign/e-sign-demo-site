@@ -1,0 +1,135 @@
+.page-content{
+    position: fixed;
+    padding-left: 0;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(246, 247, 251, 0.8)
+}
+
+[hidden]{
+    display:none !important;
+  }
+
+.signature-builder{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.close-button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+button{
+    border: none;
+}
+
+.options{
+    position: absolute;
+    top: 5px;
+    width: 50%;
+    right: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options button{
+    border-radius: 0;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    margin: 0;
+    color: black;
+}
+
+
+
+/* Type signature */
+.type-signature{
+    border-radius: 25px;
+    box-shadow:  -20px 20px 18px #d1d2d5, 20px -20px 18px #ffffff;
+    min-width: 50%;
+    padding: 25px;
+    background-color: #f6f7fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-box{
+    padding: 25px;
+    display: flex;
+    background-color: #ffffff;
+    align-items: center;
+
+}
+
+.preview-box img {
+    width: 80px;
+    height: 80px;
+    padding: 25px;
+}
+
+.preview-box p {
+    padding: 2px;
+}
+
+.signature-text{
+    font-family: 'MorrisonsScript',Sans-Serif;
+    font-size: 60px;
+    margin: 0;
+}
+/* Draw Signature */
+
+.draw-signature{
+    border-radius: 25px;
+    box-shadow:  -20px 20px 18px #d1d2d5, 20px -20px 18px #ffffff;
+    min-width: 50%;
+    padding: 25px;
+    background-color: #f6f7fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+canvas{
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.button-container{
+    padding: 25px;
+}
+
+/* Upload */
+.upload-signature{
+    border-radius: 25px;
+    box-shadow:  -20px 20px 18px #d1d2d5, 20px -20px 18px #ffffff;
+    min-width: 50%;
+    padding: 25px;
+    background-color: #f6f7fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.signature-upload-preview{
+    max-width: 300px;
+    max-height: 300px;
+}

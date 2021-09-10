@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { Base64Service } from "../../services/base64.service";
+import { IframeService } from "../../services/iframe.service";
 
 @Component({
   selector: 'app-corprate-law',
@@ -9,7 +10,8 @@ import { Base64Service } from "../../services/base64.service";
 })
 export class CorprateLawComponent implements OnInit {
   constructor(
-    private base64Service: Base64Service
+    private base64Service: Base64Service,
+    private iframeservice: IframeService
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,73 @@ export class CorprateLawComponent implements OnInit {
   fileType: any;
   fileRawData: any;
   fileName: any;
+
+  iframeUrl: any;
+
+  dummy: any = {
+    "envelope": {
+      "title": "Contract Signing Pack",
+      "subject": "you have a envelope to sign",
+      "description": "please sign the documents",
+      "language": "english",
+      "signer_redirect_uri": "string",
+      "documents": [
+        {
+          "title": "Test Contract",
+          "upload_file": {
+            "id": "TGfwudR87qbl701ZVgXd8oSoCNz-Zt"
+          },
+          "attachment_files": [
+            {
+              "id": "TGfwudR87qbl701ZVgXd8oSoCNz-Zt"
+            }
+          ],
+          "carbon_copies": [
+            {
+              "name": "string",
+              "email": "user@example.com"
+            }
+          ]
+        }
+      ],
+      "signers": [
+        {
+          "name": "John Doe",
+          "email": "user@example.com",
+          "document_authentication": {
+            "country_code": "44",
+            "phone": "12345678910",
+            "passcode": "r44ty6"
+          },
+          "signer_options": {
+            "auto_reminder_frequency": 7,
+            "id_check_required": true
+          },
+          "signer_details": {
+            "primary_sequential_email": "string"
+          }
+        }
+      ],
+      "envelope_options": {
+        "dont_send_signing_emails": false,
+        "sign_in_sequential_order": false,
+        "days_envelope_expires": "10"
+      },
+      "carbon_copies": [
+        {
+          "name": "string",
+          "email": "user@example.com"
+        }
+      ],
+      "tags": [
+        {
+          "name": "contracts"
+        }
+      ],
+      "redirect_url": "https://example.com/redirect_back_to_my_site"
+    }
+  }
+  
 
   WorkFlow = new FormGroup({
     document: new FormControl({}),
@@ -83,6 +152,10 @@ export class CorprateLawComponent implements OnInit {
     if(this.WorkFlow.value.document != {} 
       && this.WorkFlow.value.signers.length >= 1){
         console.log('passed')
+        this.iframeservice.GetLink(this.dummy).subscribe(res => {
+          console.log(res)
+          this.iframeUrl = res.redirect_url
+        })
         this.changePage()
       } else {
         if(this.WorkFlow.value.document.title == undefined

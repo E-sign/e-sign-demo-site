@@ -1,0 +1,38 @@
+<div class="page-content">
+    <div class="signature-builder">
+
+        <button class="close-button" (click)="closeView()">&#10005;</button>
+    
+        <div class="options">
+            <button (click)="selectMethod('type')">&#x270E; Type Signature</button>
+            <button (click)="selectMethod('draw')">&#x270E; Draw Signature</button>
+        </div>
+    
+        <div class="type-signature" [hidden]="type">
+            <form [formGroup]="TypeSignatureForm" (ngSubmit)="onTypeSubmit()" class="form">
+                <input type="text" formControlName="input">
+                <button type="submit">Save</button>
+            </form>
+            <div class="preview-box">
+                <img src="../../../assets/qrcode-icon.png" alt="qr-code">
+                <div class="text-container">
+                    <p>{{localeDate}}</p>
+                    <p class="signature-text">{{TypeSignatureForm.value.input}}</p>
+                </div>
+
+            </div>
+        </div>
+    
+    
+    
+        <div class="draw-signature" [hidden]="draw">
+            <canvas id="signaturePadCanvas" width="600" height="400"></canvas>
+        
+            <div class="button-container">
+                <button class="clear" (click)="clearCanvas()">Clear</button>
+                <button class="undo" (click)="undoClick()">Undo</button>
+                <button class="submit" (click)="submitCanvas()">Save Signature</button>
+            </div>
+        </div>
+    </div>
+</div>
