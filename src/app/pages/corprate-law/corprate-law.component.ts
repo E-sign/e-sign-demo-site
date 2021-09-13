@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
+import { HttpEvent, HttpEventType } from "@angular/common/http";
+
 import { Base64Service } from "../../services/base64.service";
 import { IframeService } from "../../services/iframe.service";
+
+import { SignerData } from "./signer-data";
+import { DocumentData } from "./document-data";
 
 @Component({
   selector: 'app-corprate-law',
@@ -28,70 +33,34 @@ export class CorprateLawComponent implements OnInit {
 
   iframeUrl: any;
 
-  dummy: any = {
-    "envelope": {
-      "title": "Contract Signing Pack",
-      "subject": "you have a envelope to sign",
-      "description": "please sign the documents",
-      "language": "english",
-      "signer_redirect_uri": "string",
-      "documents": [
-        {
-          "title": "Test Contract",
-          "upload_file": {
-            "id": "TGfwudR87qbl701ZVgXd8oSoCNz-Zt"
-          },
-          "attachment_files": [
-            {
-              "id": "TGfwudR87qbl701ZVgXd8oSoCNz-Zt"
-            }
-          ],
-          "carbon_copies": [
-            {
-              "name": "string",
-              "email": "user@example.com"
-            }
-          ]
-        }
-      ],
-      "signers": [
-        {
-          "name": "John Doe",
-          "email": "user@example.com",
-          "document_authentication": {
-            "country_code": "44",
-            "phone": "12345678910",
-            "passcode": "r44ty6"
-          },
-          "signer_options": {
-            "auto_reminder_frequency": 7,
-            "id_check_required": true
-          },
-          "signer_details": {
-            "primary_sequential_email": "string"
-          }
-        }
-      ],
-      "envelope_options": {
-        "dont_send_signing_emails": false,
-        "sign_in_sequential_order": false,
-        "days_envelope_expires": "10"
+  uploadDocArray: any = [];
+  progress: number = 0;
+  loadingDocument: boolean = false;
+  documentUploaded: boolean = false;
+
+  envelopeData: any = {
+    envelope: {
+      title: "string",
+      subject: "You have a document to sign!",
+      description: "Please sign the following document",
+      language: "english",
+      signer_redirect_url: "string",
+      documents: [],
+      signers: [],
+      envelope_options: {
+        dont_send_signing_emails: false,
+        sign_in_seqential_order: false,
+        days_envelope_expires: 10
       },
-      "carbon_copies": [
-        {
-          "name": "string",
-          "email": "user@example.com"
-        }
+      carbon_copies: [],
+      tags: [
+        { name: "contracts" }
       ],
-      "tags": [
-        {
-          "name": "contracts"
-        }
-      ],
-      "redirect_url": "https://example.com/redirect_back_to_my_site"
+      redirect_url: 'http://localhost:55650/corporate-law'
     }
   }
   
+
 
   WorkFlow = new FormGroup({
     document: new FormControl({}),
@@ -113,26 +82,83 @@ export class CorprateLawComponent implements OnInit {
       this.fileRawData = dataArr[1]
       let arr = file.name.split('.')
       this.fileName = arr[0]
-      console.log(this.fileName)
       let obj = {
         "title": this.fileName,
         "base64": this.fileRawData,
         "extension": arr[1],
         "type": "document" 
       }
-      this.WorkFlow.value.document = obj
-
+      this.uploadDocArray.push(obj)
+      await this.makeReq()
     }else{
       console.log("error")
     }
   }
 
+  async makeReq(){
+    let body = { "uploads": this.uploadDocArray }
+    this.loadingDocument = true
+    await this.iframeservice.UploadDocuments(body).subscribe((event: HttpEvent<any>) => {
+      console.log(event)
+      switch (event.type) {
+        case HttpEventType.Sent:
+          console.log('Request has been made!');
+          break;
+        case HttpEventType.ResponseHeader:
+          console.log('Response header has been received!');
+          break;
+          case HttpEventType.UploadProgress:
+          this.progress = Math.round(event.loaded / event.total! * 98);
+          break;
+        case HttpEventType.Response:
+          console.log('Document successfully uploaded!', event.body);
+          console.log(event.status)
+          this.progress = 100;
+          this.loadingDocument = false;
+          this.documentUploaded = true;
+
+          if(event.body.uploads[0].id == undefined){
+            alert('error with document upload, please refresh page')
+          }
+
+          let documentData: DocumentData = {
+            title: event.body.uploads[0].title,
+            upload_file: {
+              id: event.body.uploads[0].id
+            },
+            attachment_files: [],
+            carbon_copies: []
+          }
+
+          let docArray = []
+          docArray.push(documentData)
+          this.envelopeData.envelope.documents = docArray
+          this.envelopeData.envelope.title = event.body.uploads[0].title
+          setTimeout(() => {
+            this.documentUploaded = false;
+          }, 3000);
+        }
+      })
+    }
+
   onAddSigner(){ 
     if(this.SignerDetails.value.name != "" && this.SignerDetails.value.email != "" && this.SignerDetails.value.name != null && this.SignerDetails.value.email != null){
       this.errorText == ""
-      let obj = {
+      let obj: SignerData = {
         name: this.SignerDetails.value.name,
-        email: this.SignerDetails.value.email
+        email: this.SignerDetails.value.email,
+        document_authentication: {
+          country_code: "44",
+          phone: "12345678910",
+          passcode: "test"
+      },
+        signer_options: {
+          auto_reminder_frequncy: 7,
+          id_check_required: false
+      },
+        signer_details: {
+          primary_sequential_email: this.SignerDetails.value.email
+        }
       }
       this.WorkFlow.value.signers.push(obj)
       this.SignerDetails.reset()
@@ -151,8 +177,8 @@ export class CorprateLawComponent implements OnInit {
   checkFormFields(){
     if(this.WorkFlow.value.document != {} 
       && this.WorkFlow.value.signers.length >= 1){
-        console.log('passed')
-        this.iframeservice.GetLink(this.dummy).subscribe(res => {
+        this.envelopeData.envelope.signers = this.WorkFlow.value.signers
+        this.iframeservice.GetLink(this.envelopeData).subscribe(res => {
           console.log(res)
           this.iframeUrl = res.redirect_url
         })

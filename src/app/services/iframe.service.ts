@@ -22,6 +22,15 @@ export class IframeService {
     api_key: "demo7820"
   }
 
+  UploadDocuments(body: any){
+    let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
+    return this.http.post<any>('https://api.e-sign.co.uk/v3/uploads', body, {
+      headers, 
+      reportProgress: true,
+      observe: 'events',
+    })
+  }
+
   GetLink(body: any){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
     return this.http.post<any>(this.ROOT_URL, body, {headers})
