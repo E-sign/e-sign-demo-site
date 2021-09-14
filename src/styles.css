@@ -1,31 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
-    --light-blue: #99ccff;
-    --blue: #345eaf;
-    --dark-blue: #274d9e;
+    --light-blue: #01FDFF;
+    --blue: #274d9e;
+    --dark-blue: #09167C;
+
 }
 
 *{
     padding: 0;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    color: var(--dark-blue);
 }
 .bg-light-blue{
     background-color: var(--light-blue);
 }
-.bg-blue{
-    background-color: var(--blue);
+.bg-blue-gradient{
+    background: linear-gradient( var(--dark-blue), var(--light-blue));
 }
 .bg-dark-blue{
     background-color: var(--dark-blue);
 }
+
+.text-dark-blue{
+    color: #09167C !important;   
+}
+
 button{
-    padding: 10px 15px;
-    background-color: var(--dark-blue);
+    padding: 15px 25px;
+    background: linear-gradient(var(--light-blue), var(--dark-blue));
     color: #ffffff;
     font-weight: 600;
     border-radius: 100px;
     outline: none;
+    border: none;
+}
+
+.alternate-button {
+    background: none !important;
+    color: var(--dark-blue);
+    border: 2px solid var(--dark-blue);
 }
 
 button:focus{
@@ -46,4 +60,12 @@ svg{
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
+}
+
+@font-face {
+	font-family: 'MorrisonsScript';
+	src: url('./assets/fonts/MorrisonsScript.eot');
+	src: local('☺'), url('./assets/fonts/MorrisonsScript.woff') format('woff'), url('./assets/fonts/MorrisonsScript.ttf') format('truetype'), url('./assets/fonts/MorrisonsScript.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }

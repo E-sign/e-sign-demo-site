@@ -46,8 +46,8 @@ export class SignatureModalComponent implements OnInit {
   setCanvas(){
     let canvas = document.getElementById('signaturePadCanvas') as HTMLCanvasElement
     this.signaturePad = new SignaturePad(canvas, {
-      minWidth: 1,
-      maxWidth: 3,
+      minWidth: 3,
+      maxWidth: 6,
       throttle: 5,
       minDistance: 2,
       velocityFilterWeight: 0.5,

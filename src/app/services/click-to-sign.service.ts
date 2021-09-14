@@ -28,4 +28,15 @@ export class ClickToSignService {
     return this.http.get<any>(this.ROOT_URL + `/templates/${this.templateID}`, {headers})
   }
 
+  CreateEnvelope(data: any){
+    let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
+    return this.http.post<any>(this.ROOT_URL + '/envelopes', data, {headers})
+  }
+
+  SignDocument(signerID: string, documentID: string, data: any){
+    let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
+    return this.http.post<any>(this.ROOT_URL + `/signers/${signerID}/documents/${documentID}`, data, {headers})
+  }
+
+
 }
