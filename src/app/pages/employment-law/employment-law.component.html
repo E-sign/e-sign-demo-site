@@ -1,30 +1,57 @@
 <div class="content">
-    <div class="status-page" *ngIf="currentPage == 'status'">
-        <div>
-            <p>You have 1 document to sign</p>
-            <button (click)="openDocument()">Click to View & Sign</button>
+    <nav>
+        <div class="logo">
+            <img src="../../../assets/logo.png" alt="Logo">
         </div>
+        <div class="nav-bar">
+            <ul>
+                <li routerLink="/landing">Home</li>
+                <li>Status</li>
+                <li>About</li>
+                <li class="alternate-li">Login</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="status-page" *ngIf="currentPage == 'status'">
+        <h1 class="welcome">Welcome back</h1>
+        <div class="tile">
+            <img src="../../../assets/doc.svg" alt="document">
+            <p>You have 1 document to sign</p>
+            <button (click)="openDocument()">Click to View</button>
+
+        </div>
+        
       
     </div>
 
 
     <div class="sign-page" *ngIf="currentPage == 'sign' && templateData != undefined">
-        <button (click)="goBack()">Back</button>
-        <div class="img-wrapper">
-            <img src={{documentImage}} alt="Document to sign">
-            <div class="field" [formGroup]="SignerDetails" *ngFor="let field of documentFields" [style.left]="field.document_position.x" [style.top]="field.document_position.y" [style.width]="field.document_position.width" [style.height]="field.document_position.height">
-                <input type="email" *ngIf="field.field_placeholder == 'Email'" formControlName="email" placeholder="Email">
-                <input type="text" *ngIf="field.field_placeholder == 'Name'" formControlName="name" placeholder="Full Name">
-                <div class="signature" *ngIf="field.field_type == 'signature'" (click)="changeView()">
-                    <div class="pending"></div>
-                    <div class="completed" *ngIf="signatureSet">
-                        <img [src]="'data:image/jpg;base64,' + signatureData" alt="signature" class="signature-image" *ngIf="signatureMethod == 'draw'">
-                        <p class="signature-typed" *ngIf="signatureMethod == 'type'">{{signatureData}}</p>
+        <div class="button-container">
+            <button (click)="goBack()">Back</button>
+        </div>
+        <div class="page-container">
+            <div class="img-wrapper">
+                <img src={{documentImage}} alt="Document to sign">
+                <div class="field" [formGroup]="SignerDetails" *ngFor="let field of documentFields" [style.left]="field.document_position.x" [style.top]="field.document_position.y" [style.width]="field.document_position.width" [style.height]="field.document_position.height">
+                    <input type="email" *ngIf="field.field_placeholder == 'Email'" formControlName="email" placeholder="Email">
+                    <input type="text" *ngIf="field.field_placeholder == 'Name'" formControlName="name" placeholder="Full Name">
+                    <div class="signature" *ngIf="field.field_type == 'signature'" (click)="changeView()">
+                        <div class="pending"></div>
+                        <div class="completed" *ngIf="signatureSet">
+                            <img [src]="'data:image/jpg;base64,' + signatureData" alt="signature" class="signature-image" *ngIf="signatureMethod == 'draw'">
+                            <p class="signature-typed" *ngIf="signatureMethod == 'type'">{{signatureData}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="complete-container">
+                <img src="../../../assets/doc.svg" alt="document">
+                <h2>Document requires<br> signature</h2>
+                <button class="sign-button" (click)="signDocument()">Agree and Sign</button>
+                <p class="error" [hidden]="errorHidden">{{errorText}}</p>
+            </div>
         </div>
-        <button (click)="signDocument()">Sign</button>
     </div>
 
 

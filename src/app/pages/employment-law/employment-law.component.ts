@@ -26,6 +26,9 @@ export class EmploymentLawComponent implements OnInit {
   signatureData: any;
   signatureMethod: any;
 
+  errorText: string = ""
+  errorHidden: boolean = true
+
   toSignFields: any;
 
   envelopeData: any = {
@@ -84,6 +87,7 @@ export class EmploymentLawComponent implements OnInit {
     ){
       return false
     } else {
+      this.errorHidden = true
       return true
     }
   }
@@ -151,6 +155,8 @@ export class EmploymentLawComponent implements OnInit {
 
     } else {
       console.log('failed')
+      this.errorText = "There was an error with the fields, make sure they have all been completed correctly"
+      this.errorHidden = false
     }
     
   }

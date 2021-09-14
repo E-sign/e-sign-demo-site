@@ -1,5 +1,61 @@
+.status-page{
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-page{
+    padding-top: 100px;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome{
+    padding: 25px;
+}
+
+.tile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    
+}
+
+.tile img, p, button {
+    padding: 10px;
+}
+
+.button-container{
+    width: 96%;
+    margin: 0% 2%;
+    padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.page-container{
+    width: 100vw;
+    padding: 30px 0px;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
 .img-wrapper{
-    width: 80vw;
+    width: 65%;
     height: auto;
     position: relative;
 }
@@ -8,6 +64,19 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+.complete-container{
+    width: 20%;
+    padding: 30px 0px;
+    height: 400px;
+    text-align: center;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 25px;
 }
 
 .field{
@@ -41,4 +110,9 @@ input{
 .signature-typed{
     font-family: 'MorrisonsScript',Sans-Serif;
     font-size: 2em;
+}
+
+.sign-button{
+    padding: 15px;
+    
 }
