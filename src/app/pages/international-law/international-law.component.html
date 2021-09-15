@@ -1,12 +1,16 @@
 <div class="content">
-    <div class="form-container">
-        <h1>Sign in using oAuth</h1>
-        <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" placeholder="example@mail.com" formControlName="email">
-            <label for="password">Password:</label>
-            <input type="password" name="passowrd" id="password" placeholder="*****" formControlName="password">
-            <button type="submit">Log In</button>
-        </form>
+    <div class="sign-in-page">
+        <div class="form-container">
+            <h1>Sign in using oAuth</h1>
+            <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
+                <div class="inputs">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="example@mail.com" formControlName="email">
+                    <label for="password">Password:</label>
+                    <input type="password" name="passowrd" id="password" placeholder="*****" formControlName="password">
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
     </div>
 </div>

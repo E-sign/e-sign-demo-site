@@ -1,7 +1,22 @@
 <div class="content">
-    <div class="nav"></div>
+    <nav>
+        <div class="logo">
+            <img src="../../../assets/logo.png" alt="Logo">
+        </div>
+        <div class="nav-bar">
+            <ul>
+                <li routerLink="/landing">Home</li>
+                <li>Status</li>
+                <li>About</li>
+                <li class="alternate-li">Login</li>
+            </ul>
+        </div>
+    </nav>
     <div class="form-container" *ngIf="currentPage == 'form'">
+        
         <div class="upload">
+            <h2>Upload documents</h2>
+            <p class="number">1</p>
             <div class="options">
                 <div class="computer option">
                     <svg width="141" height="141" viewBox="0 0 141 141" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +106,7 @@
         </div>
         <p *ngIf="fileName != undefined">File: {{fileName}}</p>
 
-        <div class="loading-spinner">
+        <div class="loading-spinner" hidden={{hideSpinner}}>
             <div class="loading" *ngIf="loadingDocument">
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             </div>
@@ -103,29 +118,40 @@
             </div>
         </div>
 
-        <div class="signers">
-            <div class="signer-details" *ngFor="let signer of WorkFlow.value.signers">
-                <p>{{signer.name}}</p>
-                <p>{{signer.email}}</p>
+       
+        <div class="add-signer-form">
+            <h2>Add Signers</h2>
+            <p class="number">2</p>
+            <form class="form" [formGroup]="SignerDetails" (ngSubmit)="onAddSigner()">
+                <div class="inputs">
+                    <div class="field">
+                        <label for="email">Signer Name</label>
+                        <input id="name" type="name" placeholder="John Smith" formControlName="name">
+                    </div>
+                    <div class="field">
+                        <label for="email">Signer Email</label>
+                        <input id="email" type="email" placeholder="example@mail.com" formControlName="email">
+                    </div>
+                </div>
+                <button class="add-signer-button">Add Signer</button>
+            </form>
+            <div class="signers">
+                <p>Signers</p>
+                <div class="signer-details" *ngFor="let signer of WorkFlow.value.signers">
+                    <p>{{signer.name}}</p>
+                    <p>-</p>
+                    <p>{{signer.email}}</p>
+                </div>
             </div>
         </div>
 
-        <div class="add-signer-form">
-            <form class="form" [formGroup]="SignerDetails" (ngSubmit)="onAddSigner()">
-                <label for="email">Signer Name</label>
-                <input id="name" type="name" placeholder="John Smith" formControlName="name">
-                <label for="email">Signer Email</label>
-                <input id="email" type="email" placeholder="example@mail.com" formControlName="email">
-                <button type="submit">Add Signer</button>
-            </form>
-        </div>
-
-        <button (click)="checkFormFields()">next</button>
         <p>{{errorText}}</p>
+
+
+        <button (click)="checkFormFields()" class="navigation">Next</button>
     </div>
-    <div class="form-container" *ngIf="currentPage == 'iframe'">
-        <p>iframe</p>
-        <iframe [src]=" iframeUrl | safe " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
-        <button (click)="changePage()">back</button>
+    <div class="iframe-container" *ngIf="currentPage == 'iframe'">
+        <iframe crossorigin="anonymous" [src]=" iframeUrl | safe " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
+        <!-- <button (click)="changePage()" class="navigation">Back</button> -->
     </div>
 </div>

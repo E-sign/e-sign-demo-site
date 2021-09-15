@@ -35,6 +35,7 @@ export class ClickToSignService {
 
   SignDocument(signerID: string, documentID: string, data: any){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
+    console.log(data)
     return this.http.post<any>(this.ROOT_URL + `/signers/${signerID}/documents/${documentID}`, data, {headers})
   }
 

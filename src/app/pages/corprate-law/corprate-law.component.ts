@@ -35,6 +35,7 @@ export class CorprateLawComponent implements OnInit {
 
   uploadDocArray: any = [];
   progress: number = 0;
+  hideSpinner: boolean = true
   loadingDocument: boolean = false;
   documentUploaded: boolean = false;
 
@@ -98,6 +99,7 @@ export class CorprateLawComponent implements OnInit {
   async makeReq(){
     let body = { "uploads": this.uploadDocArray }
     this.loadingDocument = true
+    this.hideSpinner = false
     await this.iframeservice.UploadDocuments(body).subscribe((event: HttpEvent<any>) => {
       console.log(event)
       switch (event.type) {
@@ -136,6 +138,7 @@ export class CorprateLawComponent implements OnInit {
           this.envelopeData.envelope.title = event.body.uploads[0].title
           setTimeout(() => {
             this.documentUploaded = false;
+            this.hideSpinner = true
           }, 3000);
         }
       })
@@ -178,8 +181,12 @@ export class CorprateLawComponent implements OnInit {
     if(this.WorkFlow.value.document != {} 
       && this.WorkFlow.value.signers.length >= 1){
         this.envelopeData.envelope.signers = this.WorkFlow.value.signers
+        console.log(this.envelopeData)
         this.iframeservice.GetLink(this.envelopeData).subscribe(res => {
           console.log(res)
+          let url = res.redirect_url
+          let noProtocol = url.replace(/^https?\:\/\//i, "");
+          console.log(noProtocol)
           this.iframeUrl = res.redirect_url
         })
         this.changePage()
