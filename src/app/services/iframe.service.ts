@@ -16,7 +16,7 @@ export class IframeService {
   oAuthData: any = {
     id: "83aec176-c469-4c21-ab3e-ddd8a0f64679",
     name: "E-Law-Direct Demo",
-    redirect_uri: "https://e-law-direct.com/redirect",
+    redirect_uri: "http://localhost:9000/international-law",
     client_id: "vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6KsMrDdE",
     client_secret: "ykIywcId71MaVwMINeVM3P2NvvTXHrPG67SAZcUd2os",
     api_key: "demo7820"

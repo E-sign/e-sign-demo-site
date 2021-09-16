@@ -151,7 +151,7 @@
         <button (click)="checkFormFields()" class="navigation">Next</button>
     </div>
     <div class="iframe-container" *ngIf="currentPage == 'iframe'">
-        <iframe crossorigin="anonymous" [src]=" iframeUrl | safe " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
+        <iframe crossorigin="anonymous" referrerpolicy="no-referrer" [src]=" iframeUrl | safe " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
         <!-- <button (click)="changePage()" class="navigation">Back</button> -->
     </div>
 </div>
