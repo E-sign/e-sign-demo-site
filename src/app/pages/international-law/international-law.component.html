@@ -1,16 +1,23 @@
 <div class="content">
-    <div class="sign-in-page">
-        <div class="form-container">
-            <h1>Sign in using oAuth</h1>
-            <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
-                <div class="inputs">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" placeholder="example@mail.com" formControlName="email">
-                    <label for="password">Password:</label>
-                    <input type="password" name="passowrd" id="password" placeholder="*****" formControlName="password">
+    <div class="sign-in-page" *ngIf="loaded">
+        <h1>Welcome {{localUserData.account.users[0].name}}</h1>
+        <div class="files-container">
+            <div class="files" *ngIf="dataPresent;else noFiles">
+                <div class="file" *ngFor="let file of localDocumentData.files; index as i;">
+                    <div class="card">
+                        <img src={{file.thumbnail}} alt={{file.file_name}}>
+                        <p>{{file.file_name}}</p>
+                        <p>{{ file.file_size | bytes: false }}</p>
+                    </div>
                 </div>
-                <button type="submit">Log In</button>
-            </form>
+            </div>
         </div>
+        <ng-template #noFiles>
+            <p>No Files</p>
+        </ng-template>
+    </div>
+
+    <div class="loading" *ngIf="loaded == false">
+
     </div>
 </div>

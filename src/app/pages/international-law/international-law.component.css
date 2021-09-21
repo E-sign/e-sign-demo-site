@@ -1,22 +1,12 @@
 .sign-in-page{
     width:100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-container{
-    width: 600px;
     height: auto;
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
-    padding: 30px;
 }
+
 
 h1{
     margin: 20px 0px;
@@ -31,4 +21,47 @@ form{
 input{
     margin: 10px;
 
+}
+
+.files-container{
+    padding: 5%;
+    border-radius: 25px;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: 20px;
+}
+
+.files{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.file{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.card img{
+    width: 75%;
+    box-shadow: 5px 5px 10px 5px #e6e5e5;
 }

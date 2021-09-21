@@ -42,7 +42,7 @@ export class EmploymentLawComponent implements OnInit {
       ],
       signers: [],
       envelope_options: {
-        dont_send_signing_emails: false,
+        dont_send_signing_emails: true,
         sign_in_sequential_order: false,
         days_envelope_expires: "10"
       },
@@ -180,7 +180,7 @@ export class EmploymentLawComponent implements OnInit {
       let fieldValue: any = {}
       fieldValue.field_id = this.toSignFields[i].id
       if(this.toSignFields[i].field_type == "signature"){
-        fieldValue.field_value = this.signatureData
+        fieldValue.field_value = "1"
       } else if (this.toSignFields[i].field_placeholder == "Name"){
         fieldValue.field_value = this.SignerDetails.value.name
       } else if (this.toSignFields[i].field_placeholder == "Email"){

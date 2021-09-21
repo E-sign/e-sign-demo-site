@@ -12,4 +12,11 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  EsignLink: string = "https://app.e-sign.co.uk/#/authorize?client_id=vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6KsMrDdE&response_type=code&redirect_uri=http:%2F%2Flocalhost:9000%2Finternational-law"
+
+
+  goToUrl(): void {
+    window.location.href = this.EsignLink;
+}
+
 }
