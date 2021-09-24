@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {HttpClientModule} from '@angular/common/http';
 import { InternationalLawComponent } from './international-law.component';
 
 describe('InternationalLawComponent', () => {
@@ -8,7 +9,8 @@ describe('InternationalLawComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InternationalLawComponent ]
+      declarations: [ InternationalLawComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
@@ -22,4 +24,5 @@ describe('InternationalLawComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

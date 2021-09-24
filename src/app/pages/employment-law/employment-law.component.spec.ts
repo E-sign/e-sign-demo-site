@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {HttpClientModule} from '@angular/common/http';
 import { EmploymentLawComponent } from './employment-law.component';
 
 describe('EmploymentLawComponent', () => {
@@ -8,7 +9,8 @@ describe('EmploymentLawComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmploymentLawComponent ]
+      declarations: [ EmploymentLawComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
@@ -22,4 +24,7 @@ describe('EmploymentLawComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
 });

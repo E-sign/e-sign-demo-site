@@ -166,14 +166,19 @@ export class CorprateLawComponent implements OnInit {
       this.WorkFlow.value.signers.push(obj)
       this.SignerDetails.reset()
       console.log(this.WorkFlow.value.signers)
+      return this.WorkFlow.value.signers
     } else if(this.SignerDetails.value.name == "" && this.SignerDetails.value.email == ""){
       this.errorText = "Please add the signers name and email"
+      return null
     } else if (this.SignerDetails.value.name == ""){
       this.errorText = "Please add the signers name"
+      return null
     } else if (this.SignerDetails.value.email == ""){
       this.errorText = "Please add the signers email"
+      return null
     } else {
       this.errorText = "Unknown error adding signer"
+      return null
     }
   }
 
@@ -190,16 +195,21 @@ export class CorprateLawComponent implements OnInit {
           this.iframeUrl = res.redirect_url
         })
         this.changePage()
+        return "passed"
       } else {
         if(this.WorkFlow.value.document.title == undefined
           && this.WorkFlow.value.signers.length == 0){
             this.errorText = "Please select a document to sign and add at least one signer"
-        } else if(this.WorkFlow.value.document.title == undefined){
-          this.errorText = "Please select a document to sign"
-        } else if (this.WorkFlow.value.signers.length == 0){
-          this.errorText = "Please add at least one signer"
-        } else {
-          this.errorText = "Unknown Error"
+            return "error"
+          } else if(this.WorkFlow.value.document.title == undefined){
+            this.errorText = "Please select a document to sign"
+            return "error"
+          } else if (this.WorkFlow.value.signers.length == 0){
+            this.errorText = "Please add at least one signer"
+            return "error"
+          } else {
+            this.errorText = "Unknown Error"
+            return "error"
         }
       }
   }
