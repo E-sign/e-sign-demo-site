@@ -15,6 +15,7 @@ export class EmploymentLawComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadDocument()
+    console.log(navigator)
   }
 
   displaySignature: boolean = true
@@ -161,12 +162,27 @@ export class EmploymentLawComponent implements OnInit {
     
   }
 
+  detectedOS = "Unknown OS";
+  getUserOS(){
+    if (navigator.appVersion.indexOf("Mac") != -1){ 
+        return "MacOS";
+    } else if (navigator.appVersion.indexOf("Win") != -1){
+      return "Windows";
+    } else if (navigator.appVersion.indexOf("Linux") != -1) {
+      return "Linux";
+    } else {
+      return "other"
+    }
+
+
+  }
+
   sendSignReq(docId: string, signerId: string){
     let data: any = {
       sign: {
         agree: "confirm",
         system: {
-          operating_system: "mac",
+          operating_system: this.detectedOS,
           browser: "chrome",
           browser_version: "17.3",
           remote_ip: "0.0.0.0"
@@ -192,6 +208,7 @@ export class EmploymentLawComponent implements OnInit {
     }
 
     if(data.sign.field_values.length == 3){
+      console.log(data)
       this.clickToSignService.SignDocument(signerId, docId, data).subscribe(res => {
         console.log(res)
       })

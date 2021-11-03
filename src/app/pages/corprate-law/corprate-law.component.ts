@@ -14,6 +14,7 @@ import { DocumentData } from "./document-data";
   styleUrls: ['./corprate-law.component.css']
 })
 export class CorprateLawComponent implements OnInit {
+
   constructor(
     private base64Service: Base64Service,
     private iframeservice: IframeService
@@ -25,7 +26,7 @@ export class CorprateLawComponent implements OnInit {
   currentPage: string = 'form'
   formNotComplete: boolean = true;
 
-  errorText: string = ''
+  errorText: string = '';
 
   fileType: any;
   fileRawData: any;
@@ -57,7 +58,7 @@ export class CorprateLawComponent implements OnInit {
       tags: [
         { name: "contracts" }
       ],
-      redirect_url: 'http://localhost:55650/corporate-law'
+      redirect_url: 'http://localhost:9000/corporate-law'
     }
   }
   
@@ -101,7 +102,6 @@ export class CorprateLawComponent implements OnInit {
     this.loadingDocument = true
     this.hideSpinner = false
     await this.iframeservice.UploadDocuments(body).subscribe((event: HttpEvent<any>) => {
-      console.log(event)
       switch (event.type) {
         case HttpEventType.Sent:
           console.log('Request has been made!');
@@ -119,30 +119,75 @@ export class CorprateLawComponent implements OnInit {
           this.loadingDocument = false;
           this.documentUploaded = true;
 
-          if(event.body.uploads[0].id == undefined){
-            alert('error with document upload, please refresh page')
-          }
+          this.handleResponse(event);
 
-          let documentData: DocumentData = {
-            title: event.body.uploads[0].title,
-            upload_file: {
-              id: event.body.uploads[0].id
-            },
-            attachment_files: [],
-            carbon_copies: []
-          }
-
-          let docArray = []
-          docArray.push(documentData)
-          this.envelopeData.envelope.documents = docArray
-          this.envelopeData.envelope.title = event.body.uploads[0].title
-          setTimeout(() => {
-            this.documentUploaded = false;
-            this.hideSpinner = true
-          }, 3000);
         }
       })
     }
+
+    async handleResponse(event: any){
+      let docArray = []
+
+      let documentData = await this.handleDocumentData(event)
+
+      docArray.push(documentData)
+            this.envelopeData.envelope.documents = docArray
+            this.envelopeData.envelope.title = event.body.uploads[0].title
+            setTimeout(() => {
+              this.documentUploaded = false;
+              this.hideSpinner = true
+            }, 3000);
+    }
+
+    async handleDocumentData(event: any){
+      if(event.body.uploads[0].id == undefined){
+        console.log('error with document upload, please refresh page')
+
+        let res: any = await this.iframeservice.getMostRecentDocument()
+
+        let doc = {
+          title: res.files[0].file_name,
+          id: res.files[0].id
+        }
+        
+        console.log(doc, "doc")
+        console.log(doc.title)
+        let documentData: DocumentData = {
+          title: doc.title,
+          upload_file: {
+            id: doc.id
+          },
+          attachment_files: [],
+          carbon_copies: []
+        }
+
+        console.log(documentData)
+        return documentData
+
+      } else {
+        let documentData: DocumentData = {
+          title: event.body.uploads[0].title,
+          upload_file: {
+            id: event.body.uploads[0].id
+          },
+          attachment_files: [],
+          carbon_copies: []
+        }
+         return documentData
+      }
+    }
+
+    // async retrieveLastDocument(){
+    //   console.log('error catch activated')
+    //   return await this.iframeservice.getMostRecentDocument().subscribe(res => {
+    //     console.log(res)
+    //     let obj = {
+    //       title: res.files[0].file_name,
+    //       id: res.files[0].id
+    //     }
+    //       return obj
+    //   })
+    // }
 
   onAddSigner(){ 
     if(this.SignerDetails.value.name != "" && this.SignerDetails.value.email != "" && this.SignerDetails.value.name != null && this.SignerDetails.value.email != null){
@@ -188,11 +233,9 @@ export class CorprateLawComponent implements OnInit {
         this.envelopeData.envelope.signers = this.WorkFlow.value.signers
         console.log(this.envelopeData)
         this.iframeservice.GetLink(this.envelopeData).subscribe(res => {
-          console.log(res)
-          let url = res.redirect_url
+          let url = res.redirect_uri
           let noProtocol = url.replace(/^https?\:\/\//i, "");
-          console.log(noProtocol)
-          this.iframeUrl = res.redirect_url
+          this.iframeUrl = res.redirect_uri
         })
         this.changePage()
         return "passed"
@@ -214,7 +257,48 @@ export class CorprateLawComponent implements OnInit {
       }
   }
 
+  mutationCallback(mutationsList: any, observer: any){
+    console.log('callback truggered')
+    for(const mutation of mutationsList){
+      console.log(mutation)
+      if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
+        console.log(mutation);
+        console.log('Old src: ', mutation.oldValue);
+        console.log('New src: ', mutation.target.src);
+        return true;
+      }
+    }
+    return false;
+  }
 
+
+  observer = new MutationObserver(this.mutationCallback)
+  
+  mutationConfig: any = {
+    attributes: true,
+    attributeFilter: ['src'],
+    attributeOldValue: true,
+    characterData: false,
+    characterDataOldValue: false,
+    childList: false,
+    subtree: true
+  }
+  
+  targetNode: any;
+  tracking: boolean = false;
+
+  setTargetNode(){
+    if(!this.tracking){
+      this.targetNode = document.querySelector('#target-iframe')!
+      this.observer.observe(this.targetNode, this.mutationConfig);
+      this.tracking = true;
+    }
+  }
+  
+  messageListener(){
+    console.log('message event triggered')
+  }
+  
   changePage(){
     if(this.currentPage == 'form'){
       this.currentPage = 'iframe'
