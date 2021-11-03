@@ -1,21 +1,31 @@
-
-
-
 .hero{
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    padding-top: 80px;
+    margin-top: 80px;
 }
 .hero-img{
     width: 100%;
     height: 100%;
+    display: flex;
+    position: relative;
+    z-index: 0;
 }
-.hero-img img {
+.hero-img video {
     min-width: 100%;
     min-height: 100%;
 }
+
+.absolute-text{
+    position: absolute;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--light-blue);
+    width: 100%;
+    height: 100%;
+}
+
 .tile-container{
     width: 100%;
     display: flex;
@@ -49,17 +59,23 @@
     display: flex;
     justify-content: space-evenly;
     padding: 20px 0px;
+    flex-wrap: wrap;
 }
 
 .redirect-tile{
     width: 25%;
-    height: 200px;
-    padding: 30px;
+    min-width: 350px;
+    min-height: 200px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background: #ffffff;
+    box-shadow:  20px 20px 27px #adadad,
+             -20px -20px 27px #ffffff;
+    border-radius: 20px;
+    margin: 20px 0px;
 }
 
 .redirect-tile h1 {
@@ -85,4 +101,75 @@
     width: 400px;
     display: flex;
     justify-content: space-between;
+}
+
+.e-sign-colors{
+    color: linear-gradient(180deg,#f0047f 13%,#13007c 100%);
+    display: flex;
+    align-items: center;
+}
+
+.inline-img{
+    height: 100px;
+    padding: 10px;
+}
+
+@keyframes showTopText {
+  0% { transform: translate3d(0, 100%, 0); }
+  40%, 60% { transform: translate3d(0, 50%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes showBottomText {
+  0% { transform: translate3d(0, -100%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.animated-title {
+  height: 100%;
+  /* left: 50%; */
+  position: absolute;
+  /* top: 50%;
+  transform: translate(-50%, -50%); */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.animated-title > div {
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  width: 80%;
+}
+.animated-title > div div {
+  font-size: 2em;
+  padding: 2vmin 0;
+  position: absolute;
+}
+.animated-title > div div span {
+  display: block;
+}
+.animated-title > div.text-top {
+  border-bottom: 1vmin solid var(--light-blue);
+  top: 0;
+}
+.animated-title > div.text-top div {
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  bottom: 0;
+  transform: translate(0, 100%);
+}
+.animated-title > div span {
+  color: #ffffff;
+}
+.animated-title > div.text-bottom {
+  bottom: 0;
+}
+.animated-title > div.text-bottom div {
+  animation: showBottomText 0.5s;
+  animation-delay: 1.75s;
+  animation-fill-mode: forwards;
+  top: 0;
+  transform: translate(0, -100%);
 }

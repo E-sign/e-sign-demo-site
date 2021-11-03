@@ -12,6 +12,7 @@ import { CorprateLawComponent } from './pages/corprate-law/corprate-law.componen
 import { SignatureModalComponent } from "./modals/signature-modal/signature-modal.component";
 import { SanitizerPipe } from './pipes/sanitizer.pipe';
 import { BytesPipe } from "./pipes/bytes.pipe";
+import { NavBarComponent } from './common/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BytesPipe } from "./pipes/bytes.pipe";
     CorprateLawComponent,
     SignatureModalComponent,
     SanitizerPipe,
-    BytesPipe
+    BytesPipe,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

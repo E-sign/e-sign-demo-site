@@ -1,32 +1,35 @@
 <div class="content">
-    <nav>
-        <div class="logo">
-            <img src="../../../assets/logo.png" alt="Logo">
-        </div>
-        <div class="nav-bar">
-            <ul>
-                <li routerLink="/landing">Home</li>
-                <li>Status</li>
-                <li>About</li>
-                <li class="alternate-li">Login</li>
-            </ul>
-        </div>
-    </nav>
+    <app-nav-bar></app-nav-bar>
     <div class="hero">
         <div class="hero-img">
-            <img src="../../../assets/hero.png" alt="Hero Img">
+            <video playsinline autoplay muted loop>
+                <source src="../../../assets/business-video.mp4" type="video/mp4">
+            </video>
+            <div class="absolute-text">
+                <div class="animated-title">
+                    <div class="text-top">
+                      <div>
+                        <span>Accelerate</span>
+                        <span>Your Business</span>
+                      </div>
+                    </div>
+                    <div class="text-bottom">
+                      <div class="e-sign-colors">Using <img class="inline-img" src="../../../assets/blue-logo.png" alt="e-sign logo"></div>
+                    </div>
+                  </div>
+            </div>
         </div>
         <div class="tile-container">
             <div class="tile bg-light-blue">
-                <h2 class="text-dark-blue">Experienced Court Cases</h2>
+                <h2 class="text-dark-blue">Contact our team</h2>
                 <p class="text-dark-blue">Find out more...</p>
             </div>
             <div class="tile bg-blue-gradient">
-                <h2>Established Law Practice</h2>
+                <h2>Learn more about Enterprise</h2>
                 <p>Find out more...</p>
             </div>
             <div class="tile bg-dark-blue">
-                <h2>Legal Innovation Awards</h2>
+                <h2>Developer guides and information</h2>
                 <p>Find out more...</p>
             </div>
         </div>
@@ -36,29 +39,29 @@
             <div class="redirect-tile" routerLink="/corporate-law">
                 <img src="../../../assets/building.png" alt="building">
                 <h1>Corporate Law</h1>
-                <p>Providing winning legal business advice</p>
-                <button class="redirect-button">Create Agreement</button>
+                <p class="desc-text">Use E-signs iframe functionality to generate envelopes from your own site.</p>
+                <button class="redirect-button">Create Agreement Using Iframe</button>
             </div>
             <div class="redirect-tile" routerLink="/employment-law">
                 <img src="../../../assets/user-circle.png" alt="user-circle">
                 <h1>Employment Law</h1>
-                <p>HR Auditing solutions for legal compliance</p>
-                <button class="redirect-button">Sign Agreement</button>
+                <p class="desc-text">Using the API, generate and sign an envelope in one click</p>
+                <button class="redirect-button">Click To Sign Agreement</button>
             </div>
             <div class="redirect-tile" (click)="goToUrl()">
                 <img src="../../../assets/globe.png" alt="globe">
                 <h1>International Law</h1>
-                <p>Protecting our customers legal needs globally</p>
-                <button class="redirect-button" (click)="goToUrl()">OAuth</button>
+                <p class="desc-text">Retrieve account data using E-signs OAuth functionality</p>
+                <button class="redirect-button" (click)="goToUrl()">Sign In With OAuth</button>
             </div>
         </div>
-        <div class="more-info">
+        <!-- <div class="more-info">
             <h1>E-Sign - Legal Docs in a Jiffy</h1>
             <div class="button-container">
                 <button>CONNECT YOUR APP</button>
                 <button class="alternate-button">FIND OUT MORE</button>
             </div>
             <p>Legal stuff goes here</p>
-        </div>
+        </div> -->
     </div>
 </div>
