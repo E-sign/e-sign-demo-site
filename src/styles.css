@@ -89,3 +89,22 @@ ul{
 	font-weight: normal;
 	font-style: normal;
 }
+
+
+@media (min-width: 750px){
+    .desktop{
+        display: flex;
+    }
+    .mobile{
+        display: none !important;
+    }
+}
+
+@media (max-width: 750px){
+    .mobile{
+        display: flex;
+    }
+    .desktop{
+        display: none !important;
+    }
+}

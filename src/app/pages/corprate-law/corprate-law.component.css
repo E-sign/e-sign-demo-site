@@ -98,6 +98,10 @@
   opacity: 0;
 }
 
+.document-confirm-wrapper{
+  display: flex;
+}
+
 .add-signer-form{
   width: 700px;
   padding: 25px;

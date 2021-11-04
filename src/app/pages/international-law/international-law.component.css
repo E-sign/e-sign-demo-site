@@ -7,6 +7,9 @@
     align-items: center;
 }
 
+.content{
+    margin-top: 80px;
+}
 
 h1{
     margin: 20px 0px;
@@ -58,10 +61,27 @@ input{
     justify-content: center;
     align-items: center;
     word-wrap: break-word;
+    text-align: center;
     width: 100%;
 }
 
 .card img{
     width: 75%;
     box-shadow: 5px 5px 10px 5px #e6e5e5;
+}
+
+@media (min-width: 1000px){
+    .file{
+        width: 25%;
+    }
+}
+@media (max-width: 600px){
+    .file{
+        width: 50% !important;
+    }
+}
+@media (max-width: 1000px){
+    .file{
+        width: 33.33%;
+    }
 }
