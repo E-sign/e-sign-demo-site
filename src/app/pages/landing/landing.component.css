@@ -74,6 +74,8 @@ a:hover {
 .main-content{
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-top: 50px;
 }
@@ -194,6 +196,19 @@ a:hover {
   animation-fill-mode: forwards;
   top: 0;
   transform: translate(0, -100%);
+}
+
+.info-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.info-box > p{
+    padding: 20px 0px;
+    color: var(--dark-blue);
+
 }
 
 @media (max-width: 750px){

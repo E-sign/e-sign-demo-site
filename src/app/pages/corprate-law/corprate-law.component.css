@@ -3,15 +3,30 @@
   min-height: 100vh;
 }
 
+.col-wrapper{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-container{
   margin-top: 100px;
-  width: 100vw;
+  width: 65%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.confirmation-box{
+  width: 30%;
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+
 .iframe-container{
   margin-top: 100px;
   width: 100vw;
@@ -37,7 +52,7 @@
 }
 
 .upload{
-  width: 700px;
+  width: 80%;
   height: auto;    
   display: flex;
   flex-direction: column;
@@ -79,10 +94,6 @@
 
 .option button {
   margin: 20px 0px;
-  background: none;
-  color: var(--dark-blue);
-  border: 2px solid var(--dark-blue);
-  padding: 10px 20px;
 }
 
 .computer{
@@ -100,10 +111,24 @@
 
 .document-confirm-wrapper{
   display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  word-wrap: break-word;
+}
+
+.require{
+  padding: 20px;
+  text-align: center;
+}
+
+.require > p {
+  color: red !important;
 }
 
 .add-signer-form{
-  width: 700px;
+  width: 80%;
   padding: 25px;
   margin-bottom: 25px;
   height: auto;
@@ -125,7 +150,6 @@
   height: auto;
   justify-content: space-evenly;
   align-items: flex-end;
-  border-bottom: 2px lightgray solid;
 }
 
 .inputs{
@@ -163,6 +187,7 @@ input{
 
 .signer-details{
   display: flex;
+  flex-direction: column;
   width: 60%;
   justify-content: space-between;
   padding: 10px;
@@ -288,5 +313,36 @@ input{
   @keyframes fill {
     100% {
       box-shadow: inset 0px 0px 0px 30px #7ac142;
+    }
+  }
+
+  @media (max-width: 1000px){
+    .col-wrapper{
+      flex-direction: column;
+    }
+    .form-container{
+      width: 80%;
+    }
+    .confirmation-box{
+      width: 60%;
+      margin: 20px;
+    }
+    .inputs{
+      flex-direction: column;
+      width: 80%;
+      overflow: hidden;
+      justify-content: center;
+    }
+    input{
+      width: 80%;
+      padding: 10px;
+    }
+    .field{
+      justify-content: center;
+      align-items: center;
+    }
+    .add-signer-form form{
+      align-items: center;
+      justify-content: center;
     }
   }

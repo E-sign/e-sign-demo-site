@@ -21,7 +21,8 @@ export class ClickToSignService {
     api_key: "demo7820"
   }
 
-  templateID: string = "0JtBeGBlsqsxomnxTHqXRFMtKvcVPQ";
+  // templateID: string = "0JtBeGBlsqsxomnxTHqXRFMtKvcVPQ";
+  templateID: string = "3aefbba2-4dbc-4044-b160-f492ca2915c3";
 
   GetTemplate(){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)

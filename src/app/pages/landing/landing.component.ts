@@ -18,5 +18,4 @@ export class LandingComponent implements OnInit {
   goToUrl(): void {
     window.location.href = this.EsignLink;
 }
-
 }
