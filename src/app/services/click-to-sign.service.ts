@@ -21,8 +21,8 @@ export class ClickToSignService {
     api_key: "demo7820"
   }
 
-  // templateID: string = "0JtBeGBlsqsxomnxTHqXRFMtKvcVPQ";
-  templateID: string = "3aefbba2-4dbc-4044-b160-f492ca2915c3";
+  templateID: string = "0JtBeGBlsqsxomnxTHqXRFMtKvcVPQ";
+  // templateID: string = "3aefbba2-4dbc-4044-b160-f492ca2915c3";
 
   GetTemplate(){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
@@ -36,8 +36,7 @@ export class ClickToSignService {
 
   SignDocument(signerID: string, documentID: string, data: any){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
-    console.log(data)
-    return this.http.post<any>(this.ROOT_URL + `/signers/${signerID}/documents/${documentID}`, data, {headers})
+    return this.http.post<any>(this.ROOT_URL + `/signers/${signerID}/documents/${documentID}`, data, {headers, observe: 'response'})
   }
 
 

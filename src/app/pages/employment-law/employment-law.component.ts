@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ClickToSignService } from "../../services/click-to-sign.service";
 import { FormGroup, FormControl } from "@angular/forms";
@@ -15,7 +16,6 @@ export class EmploymentLawComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadDocument()
-    console.log(navigator)
   }
 
   displaySignature: boolean = true
@@ -23,9 +23,14 @@ export class EmploymentLawComponent implements OnInit {
   templateData: any;
   documentImage: any;
   documentFields: any;
-  signatureSet: boolean = false
+  signatureSet: boolean = false;
   signatureData: any;
   signatureMethod: any;
+  envelopeCompleted: boolean = false;
+  hideButton: boolean = false;
+  hideSpinner: boolean = true;
+  loadingDocument:boolean = false;
+
 
   errorText: string = ""
   errorHidden: boolean = true
@@ -43,7 +48,7 @@ export class EmploymentLawComponent implements OnInit {
       ],
       signers: [],
       envelope_options: {
-        dont_send_signing_emails: true,
+        dont_send_signing_emails: false,
         sign_in_sequential_order: false,
         days_envelope_expires: "10"
       },
@@ -60,7 +65,6 @@ export class EmploymentLawComponent implements OnInit {
   loadDocument = async () => {
     await this.clickToSignService.GetTemplate().subscribe((res: any) => {
       this.templateData = res
-      console.log(res)
       this.documentImage = res.template.documents[0].upload_file.images[0].uri
       this.documentFields = res.template.documents[0].document_fields
       return res
@@ -84,7 +88,7 @@ export class EmploymentLawComponent implements OnInit {
   validateFields(){
     if(this.SignerDetails.value.name == "" ||
     this.SignerDetails.value.email == "" ||
-    this.SignerDetails.value.signature == ""
+    this.signatureData == ""
     ){
       return false
     } else {
@@ -94,7 +98,9 @@ export class EmploymentLawComponent implements OnInit {
   }
 
   signDocument = async () =>{
-
+    this.hideSpinner = false
+    this.loadingDocument = true
+    this.hideButton = true
     let bool = await this.validateFields()
     if(bool){
 
@@ -140,17 +146,11 @@ export class EmploymentLawComponent implements OnInit {
           }
         }
 
-      console.log('all fields complete')
       this.envelopeData.envelope.documents.push(document)
       this.envelopeData.envelope.signers.push(signer)
-      console.log(this.envelopeData)
 
       this.clickToSignService.CreateEnvelope(this.envelopeData).subscribe(res => {
-        console.log(res)
-        console.log(res.envelope.signers[0].id, 'signerId')
-        console.log(res.envelope.documents[0].id, 'docId')
         this.toSignFields = res.envelope.documents[0].document_fields
-        console.log(this.toSignFields)
         this.sendSignReq(res.envelope.documents[0].id, res.envelope.signers[0].id)
       })
 
@@ -158,6 +158,9 @@ export class EmploymentLawComponent implements OnInit {
       console.log('failed')
       this.errorText = "There was an error with the fields, make sure they have all been completed correctly"
       this.errorHidden = false
+      this.hideSpinner = true
+      this.loadingDocument = false
+      this.hideButton = false
     }
     
   }
@@ -208,9 +211,17 @@ export class EmploymentLawComponent implements OnInit {
     }
 
     if(data.sign.field_values.length == 3){
-      console.log(data)
+      
       this.clickToSignService.SignDocument(signerId, docId, data).subscribe(res => {
         console.log(res)
+        console.log(res.status)
+
+        if(res.status == 200){
+          this.envelopeCompleted = true;
+          this.currentPage = 'complete'
+        } else {
+          this.currentPage = 'failed'
+        }
       })
     } else {
       console.log('error', data.sign.field_values.length)
@@ -221,15 +232,22 @@ export class EmploymentLawComponent implements OnInit {
     this.displaySignature = !this.displaySignature
   }
 
-  setSignature(event: any){
-    this.SignerDetails.controls['signature'].setValue(event)
-    this.signatureData = event.data
-    this.signatureMethod = event.method
-    console.log(event)
-    this.signatureSet = true
+  // setSignature(event: any){
+  //   this.SignerDetails.controls['signature'].setValue(event)
+  //   this.signatureData = event.data
+  //   this.signatureMethod = event.method
+  //   console.log(event)
+  //   this.signatureSet = true
     
+  // }
+
+  setSignature(event: any){
+    this.signatureData = event.target.value
+    this.signatureSet = true
   }
 
-
+  refresh(){
+    window.location.reload();
+  }
 
 }

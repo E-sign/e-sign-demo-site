@@ -81,10 +81,10 @@
 
 .field{
     position: absolute;
-    width: 15%;
+    width: auto;
     height: 4%;
     z-index: 10;
-    background-color: gainsboro;
+    /* background-color: gainsboro; */
 }
 
 input{
@@ -110,9 +110,21 @@ input{
 .signature-typed{
     font-family: 'MorrisonsScript',Sans-Serif;
     font-size: 2em;
+    width: auto;
 }
 
 .sign-button{
     padding: 15px;
     
+}
+
+button :disabled {
+    background-color: grey;
+}
+
+.complete{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
