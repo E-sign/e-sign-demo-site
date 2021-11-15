@@ -48,7 +48,7 @@ export class EmploymentLawComponent implements OnInit {
       ],
       signers: [],
       envelope_options: {
-        dont_send_signing_emails: false,
+        dont_send_signing_emails: true,
         sign_in_sequential_order: false,
         days_envelope_expires: "10"
       },
@@ -142,7 +142,7 @@ export class EmploymentLawComponent implements OnInit {
             id_check_required: false
           },
           signer_details: {
-            primary_sequential_email: "string"
+            primary_sequential_email: this.SignerDetails.value.email
           }
         }
 
