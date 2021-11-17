@@ -11,7 +11,7 @@ export class IframeService {
     private http: HttpClient,
   ) { }
 
-  ROOT_URL: string = 'https://api.e-sign.co.uk/v3/envelopes/redirect'
+  ROOT_URL: string = 'https://sandbox.e-sign.co.uk/v3/envelopes/redirect'
 
   oAuthData: any = {
     id: "83aec176-c469-4c21-ab3e-ddd8a0f64679",
@@ -24,7 +24,7 @@ export class IframeService {
 
   UploadDocuments(body: any){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
-    return this.http.post<any>('https://api.e-sign.co.uk/v3/uploads', body, {
+    return this.http.post<any>('https://sandbox.e-sign.co.uk/v3/uploads', body, {
       headers, 
       reportProgress: true,
       observe: 'events',
@@ -33,12 +33,12 @@ export class IframeService {
 
   getMostRecentDocument(){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
-    return this.http.get<any>('https://api.e-sign.co.uk/v3/uploads/list/documents?page=1&per_page=1', {headers}).toPromise()
+    return this.http.get<any>('https://sandbox.e-sign.co.uk/v3/uploads/list/documents?page=1&per_page=1', {headers}).toPromise()
   }
 
   UploadDocumentsResponse(body: any){
     let headers = new HttpHeaders().set('Authorization', `Token ${this.oAuthData.api_key}`)
-    return this.http.post<any>('https://api.e-sign.co.uk/v3/uploads', body, {
+    return this.http.post<any>('https://sandbox.e-sign.co.uk/v3/uploads', body, {
       headers})
   }
 
