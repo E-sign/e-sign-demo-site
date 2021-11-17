@@ -153,7 +153,11 @@
         <button (click)="checkFormFields()" class="navigation">Next</button>
     </div>
     <div class="iframe-container" *ngIf="currentPage == 'iframe'">
-        <iframe  (load)="setTargetNode()" (message)="messageListener()" id="target-iframe" crossorigin="anonymous" referrerpolicy="no-referrer" [src]=" iframeUrl | safe " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
+        <iframe (message)="messageListener()" id="target-iframe" crossorigin="anonymous" referrerpolicy="no-referrer" [src]=" iframeUrl | safe " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
         <!-- <button (click)="changePage()" class="navigation">Back</button> -->
+    </div>
+    <div class="complete-page" *ngIf="currentPage == 'complete-page'">
+        <h1>Your envelope has been sent!</h1>
+        <button (click)="refresh()">Send Another</button>
     </div>
 </div>

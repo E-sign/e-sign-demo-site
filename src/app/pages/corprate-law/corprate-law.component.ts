@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { HttpEvent, HttpEventType } from "@angular/common/http";
 
@@ -237,7 +237,7 @@ export class CorprateLawComponent implements OnInit {
           let noProtocol = url.replace(/^https?\:\/\//i, "");
           this.iframeUrl = res.redirect_uri
         })
-        this.changePage()
+        this.changePage('iframe')
         return "passed"
       } else {
         if(this.WorkFlow.value.document.title == undefined
@@ -257,53 +257,70 @@ export class CorprateLawComponent implements OnInit {
       }
   }
 
-  mutationCallback(mutationsList: any, observer: any){
-    console.log('callback truggered')
-    for(const mutation of mutationsList){
-      console.log(mutation)
-      if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
-        console.log(mutation);
-        console.log('Old src: ', mutation.oldValue);
-        console.log('New src: ', mutation.target.src);
-        return true;
-      }
-    }
-    return false;
-  }
+  // mutationCallback(mutationsList: any, observer: any){
+  //   console.log('callback truggered')
+  //   for(const mutation of mutationsList){
+  //     console.log(mutation)
+  //     if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
+  //       console.log(mutation);
+  //       console.log('Old src: ', mutation.oldValue);
+  //       console.log('New src: ', mutation.target.src);
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
 
-  observer = new MutationObserver(this.mutationCallback)
+  // observer = new MutationObserver(this.mutationCallback)
   
-  mutationConfig: any = {
-    attributes: true,
-    attributeFilter: ['src'],
-    attributeOldValue: true,
-    characterData: false,
-    characterDataOldValue: false,
-    childList: false,
-    subtree: true
-  }
+  // mutationConfig: any = {
+  //   attributes: true,
+  //   attributeFilter: ['src'],
+  //   attributeOldValue: true,
+  //   characterData: false,
+  //   characterDataOldValue: false,
+  //   childList: false,
+  //   subtree: true
+  // }
   
-  targetNode: any;
-  tracking: boolean = false;
+  // targetNode: any;
+  // tracking: boolean = false;
 
-  setTargetNode(){
-    if(!this.tracking){
-      this.targetNode = document.querySelector('#target-iframe')!
-      this.observer.observe(this.targetNode, this.mutationConfig);
-      this.tracking = true;
-    }
-  }
+  // setTargetNode(){
+  //   if(!this.tracking){
+  //     this.targetNode = document.querySelector('#target-iframe')!
+  //     this.observer.observe(this.targetNode, this.mutationConfig);
+  //     this.tracking = true;
+  //   }
+  // }
   
   messageListener(){
     console.log('message event triggered')
   }
   
-  changePage(){
-    if(this.currentPage == 'form'){
-      this.currentPage = 'iframe'
-    } else if (this.currentPage == 'iframe'){
+  changePage(page: string){
+    if(page == 'form'){
       this.currentPage = 'form'
+    } else if (page == 'iframe'){
+      this.currentPage = 'iframe'
+    } else if (page == 'complete-page'){
+      this.currentPage = 'complete-page'
     }
+  }
+
+  @HostListener('window:message', ['$event'])
+  handleMessage(event: any) {
+
+    if(event.origin != "http://localhost:9000"){
+      console.log('message recieved from iframe')
+      if(event.data == "Envelope sent"){
+        this.currentPage = "complete-page"
+      }
+    }
+  }
+
+  refresh(){
+    window.location.reload();
   }
 }
