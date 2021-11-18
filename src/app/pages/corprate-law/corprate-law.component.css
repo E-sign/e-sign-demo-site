@@ -1,6 +1,7 @@
 .content{
   width: 100vw;
   min-height: 100vh;
+  z-index: 1;
 }
 
 .col-wrapper{
@@ -9,6 +10,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .complete-page{
@@ -36,6 +38,10 @@
   width: 30%;
   background-color: #ffffff;
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .iframe-container{
@@ -136,6 +142,12 @@
 
 .require > p {
   color: red !important;
+}
+
+.error-text{
+  max-width: 80%;
+  text-align: center;
+  align-self: center;
 }
 
 .add-signer-form{

@@ -115,7 +115,7 @@ input{
 
 .sign-button{
     padding: 15px;
-    
+    margin: 15px 0px;
 }
 
 button :disabled {
@@ -127,4 +127,27 @@ button :disabled {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 700px){
+    .page-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .img-wrapper{
+        width: 90%;
+    }
+    .complete-container{
+        width: 90%;
+        flex-direction: row;
+        height: auto;
+        
+    }
+    .text-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

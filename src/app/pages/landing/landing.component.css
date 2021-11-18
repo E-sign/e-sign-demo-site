@@ -21,6 +21,11 @@
     min-height: 100%;
 }
 
+.divider{
+    width: 100vw;
+    height: 20px;
+}
+
 .absolute-text{
     position: absolute;
     font-weight: 900;
@@ -102,7 +107,7 @@ a:hover {
     box-shadow:  20px 20px 27px #adadad,
              -20px -20px 27px #ffffff;
     border-radius: 20px;
-    margin: 20px 0px;
+    margin: 20px;
 }
 
 .redirect-tile h1 {
@@ -204,6 +209,9 @@ a:hover {
     justify-content: center;
     align-items: center;
     width: 80%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
 }
 .info-box > p{
     padding: 20px 0px;
@@ -214,8 +222,24 @@ a:hover {
 @media (max-width: 750px){
     .tile h2{
         font-size: 1em;
+        display: none;
     }
     .tile p {
         font-size: 0.6em;
+    }
+    .tile svg{
+        width: 30%;
+    }
+}
+
+@media (max-width: 436px) {
+    .tile{
+        height: 60px;
+    }
+    .redirect-tile{
+        min-width: 0px;
+        width: auto;
+        max-width: 95%;
+        text-align: center;
     }
 }

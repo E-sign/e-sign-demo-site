@@ -31,6 +31,7 @@ export class CorprateLawComponent implements OnInit {
   fileType: any;
   fileRawData: any;
   fileName: any;
+  fileSelected: boolean = false;
 
   iframeUrl: any;
 
@@ -78,6 +79,7 @@ export class CorprateLawComponent implements OnInit {
     
     let file = e.target.files[0]
     if (file) {
+      this.fileSelected = true;
       this.fileType = file.type;
       let data: string = await this.base64Service.getBase64(file) as string
       let dataArr = data.split("base64,")
@@ -228,7 +230,8 @@ export class CorprateLawComponent implements OnInit {
   }
 
   checkFormFields(){
-    if(this.WorkFlow.value.document != {} 
+    console.log(this.WorkFlow.value.document.title)
+    if(this.envelopeData.envelope.documents.length > 0
       && this.WorkFlow.value.signers.length >= 1){
         this.envelopeData.envelope.signers = this.WorkFlow.value.signers
         console.log(this.envelopeData)
@@ -243,6 +246,9 @@ export class CorprateLawComponent implements OnInit {
         if(this.WorkFlow.value.document.title == undefined
           && this.WorkFlow.value.signers.length == 0){
             this.errorText = "Please select a document to sign and add at least one signer"
+            return "error"
+          }else if (this.envelopeData.envelope.documents.length < 1 && this.fileSelected){
+            this.errorText = "Please wait for document to be uploaded"
             return "error"
           } else if(this.WorkFlow.value.document.title == undefined){
             this.errorText = "Please select a document to sign"

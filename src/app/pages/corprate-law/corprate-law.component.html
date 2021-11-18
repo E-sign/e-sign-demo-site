@@ -81,7 +81,7 @@
                             </defs></svg>
                             
                         <button>Your Device</button>
-                        <input type="file" class="file-input" (change)="onFileSelected($event)" accept=".png, .docx, .pdf, .doc, .rtf, .jpg, .jpeg" id="fileUpload">
+                        <input type="file" class="file-input pointer" (change)="onFileSelected($event)" accept=".png, .docx, .pdf, .doc, .rtf, .jpg, .jpeg" id="fileUpload">
                     </div>
                     <!-- <div class="dropbox option">
                         <img src="../../../assets/Dropbox_Icon.svg" alt="Upload from Dropbox">
@@ -129,7 +129,7 @@
         <div class="confirmation-box">
             <div class="require">
                 <p *ngIf="fileName == undefined">Please upload a document</p>
-                <p *ngIf="WorkFlow.value.signers.length < 1"> Please add a document to sign</p>
+                <p *ngIf="WorkFlow.value.signers.length < 1"> Please add a document signer</p>
             </div>
 
             <div class="document-confirm-wrapper" *ngIf="fileName != undefined">
@@ -145,7 +145,7 @@
                     <p>{{signer.email}}</p>
                 </div>
             </div>
-            <p>{{errorText}}</p>
+            <p class="error-text">{{errorText}}</p>
         </div>
 
 
