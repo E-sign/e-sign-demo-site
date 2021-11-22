@@ -3,7 +3,7 @@
     <div class="status-page" *ngIf="currentPage == 'status'">
         <h1 class="welcome">Welcome back</h1>
         <div class="tile">
-            <img src="../../../assets/doc.svg" alt="document">
+            <img src="./assets/doc.svg" alt="document">
             <p>You have 1 document to sign</p>
             <button (click)="openDocument()">Click to View</button>
 
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="complete-container">
-                <img src="../../../assets/doc.svg" alt="document">
+                <img src="./assets/doc.svg" alt="document">
                 <div class="text-container">
                     <h2>Document requires<br> signature</h2>
                     <button class="sign-button" (click)="signDocument()" *ngIf="!hideButton">Agree and Sign</button>
