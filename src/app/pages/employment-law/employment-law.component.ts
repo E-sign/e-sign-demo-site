@@ -211,6 +211,7 @@ export class EmploymentLawComponent implements OnInit {
     }
 
     if(data.sign.field_values.length == 3){
+      console.log(data)
       
       this.clickToSignService.SignDocument(signerId, docId, data).subscribe(res => {
         console.log(res)

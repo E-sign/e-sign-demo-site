@@ -317,7 +317,6 @@ export class CorprateLawComponent implements OnInit {
 
   @HostListener('window:message', ['$event'])
   handleMessage(event: any) {
-
     if(event.origin != "http://localhost:9000"){
       console.log('message recieved from iframe')
       if(event.data == "Envelope sent"){

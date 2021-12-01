@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from "@angular/common/http";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ClickToSignService {
     redirect_uri: "http://localhost:9000/international-law",
     client_id: "vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6KsMrDdE",
     client_secret: "ykIywcId71MaVwMINeVM3P2NvvTXHrPG67SAZcUd2os",
-    api_key: "demo7820"
+    api_key: environment.apiKey
   }
 
   templateID: string = "0JtBeGBlsqsxomnxTHqXRFMtKvcVPQ";
