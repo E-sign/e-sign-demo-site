@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { FormControl, FormGroup } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup } from "@angular/forms";
 import { HttpEvent, HttpEventType } from "@angular/common/http";
 
 import { Base64Service } from "../../services/base64.service";
@@ -65,14 +65,14 @@ export class CorprateLawComponent implements OnInit {
   
 
 
-  WorkFlow = new FormGroup({
-    document: new FormControl({}),
-    signers: new FormControl([])
+  WorkFlow = new UntypedFormGroup({
+    document: new UntypedFormControl({}),
+    signers: new UntypedFormControl([])
   })
 
-  SignerDetails = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl('')
+  SignerDetails = new UntypedFormGroup({
+    name: new UntypedFormControl(''),
+    email: new UntypedFormControl('')
   })
 
   onFileSelected = async (e: any) => {

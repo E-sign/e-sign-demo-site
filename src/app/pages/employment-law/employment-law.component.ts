@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ClickToSignService } from "../../services/click-to-sign.service";
-import { FormGroup, FormControl } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-employment-law',
@@ -79,10 +79,10 @@ export class EmploymentLawComponent implements OnInit {
     this.currentPage = "status"
   }
 
-  SignerDetails = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    signature: new FormControl('')
+  SignerDetails = new UntypedFormGroup({
+    name: new UntypedFormControl(''),
+    email: new UntypedFormControl(''),
+    signature: new UntypedFormControl('')
   })
 
   validateFields(){

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { SignaturePad } from "./SignatureControl/signature_pad";
-import { FormGroup, FormControl } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormControl } from "@angular/forms";
 import { Base64Service } from "../../services/base64.service";
 
 @Component({
@@ -38,8 +38,8 @@ export class SignatureModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  TypeSignatureForm = new FormGroup({
-    input: new FormControl('')
+  TypeSignatureForm = new UntypedFormGroup({
+    input: new UntypedFormControl('')
   })
 
 
