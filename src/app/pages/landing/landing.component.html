@@ -1,79 +1,108 @@
 <div class="content">
     <app-nav-bar></app-nav-bar>
     <div class="hero">
-        <div class="hero-img desktop">
-            <video muted="true" autoplay="true" loop="true" playsinline="true" id="hero-video">
-                <source src="./assets/business-video.mp4" type="video/mp4">
-            </video>
-            <div class="absolute-text">
-                <div class="animated-title">
-                    <div class="text-top">
-                      <div>
-                        <span>Accelerate</span>
-                        <span>Your Business</span>
-                      </div>
-                    </div>
-                    <div class="text-bottom">
-                      <div class="e-sign-colors"> <img class="inline-img" src="./assets/blue-logo.png" alt="e-sign logo"></div>
-                    </div>
-                  </div>
-            </div>
-        </div>
-        <div class="hero-img mobile">
-            <img src="./assets/hero.png " alt="Hero image placeholder">
-        </div>
-        <div class="divider bg-blue-gradient">
-
+        <h1>&lt; E-Sign Example Integrations /&gt;</h1>
+        <div class="redirect-buttons">
+            <button>View Guides</button>
+            <button>View API Reference</button>
         </div>
     </div>
-    <div class="main-content">
-
+    <div class="divider"></div>
+    <div class="demo-tile-container">
+        <div class="tile-row">
+            <div class="tile-icon color-2">
+                <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M147.631 56.325C149.175 62.3188 150 68.6 150 75.075C150 116.469 116.394 150 75 150C33.6062 150 0 116.469 0 75.075C0 33.6812 33.6062 0.075 75 0.075C91.1313 0.075 106.056 5.2125 118.294 13.8938L129.031 0L141.125 37.575H100L110.644 23.8C100.519 16.75 88.2563 12.575 75 12.575C40.5 12.575 12.5 40.5813 12.5 75.075C12.5 109.575 40.5 137.575 75 137.575C109.494 137.575 137.5 109.575 137.5 75.075C137.5 68.5438 136.494 62.2438 134.637 56.325H147.631V56.325ZM100 106.25H50V68.75H56.25V56.25C56.25 45.9 64.65 37.5 75 37.5C85.35 37.5 93.75 45.9 93.75 56.25V68.75H100V106.25ZM68.75 56.25V68.75H81.25V56.25C81.25 52.8 78.45 50 75 50C71.55 50 68.75 52.8 68.75 56.25Z" fill="url(#paint0_linear_5_150)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_5_150" x1="75" y1="0" x2="75" y2="150" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00F0FF"/>
+                    <stop offset="1" stop-color="#13007C"/>
+                    <stop offset="1" stop-color="#09164F"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>                    
+            </div>
+            <div class="tile color-1">
+                <h2>Adding OAuth 2.0</h2>
+                <p>Retrieve account data using E-signs OAuth functionality.</p>
+                <button class="demo-button"  routerLink="/oauth-demo">
+                    View Demo
+                </button>
+            </div>
+        </div>
+        <div class="tile-row">
+            <div class="tile-icon color-3">
+                <svg width="150" height="125" viewBox="0 0 150 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M137.5 12.5V112.5H12.5V12.5H137.5ZM150 0H0V125H150V0ZM118.75 81.825V43.175C122.381 41.8812 125 38.45 125 34.375C125 29.2 120.8 25 115.625 25C111.55 25 108.119 27.6188 106.825 31.25H43.175C41.8812 27.6188 38.45 25 34.375 25C29.2 25 25 29.2 25 34.375C25 38.45 27.6188 41.8812 31.25 43.175V81.825C27.6188 83.1188 25 86.55 25 90.625C25 95.8 29.2 100 34.375 100C38.45 100 41.8812 97.3812 43.175 93.75H106.825C108.119 97.3812 111.55 100 115.625 100C120.8 100 125 95.8 125 90.625C125 86.55 122.381 83.1188 118.75 81.825V81.825ZM106.825 87.5H43.175C42.2375 84.85 40.15 82.7688 37.5 81.825V43.175C40.15 42.2312 42.2312 40.15 43.175 37.5H106.825C107.769 40.15 109.85 42.2312 112.5 43.175V81.825C109.85 82.7688 107.762 84.85 106.825 87.5V87.5Z" fill="url(#paint0_linear_5_154)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_5_154" x1="75" y1="0" x2="75" y2="125" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00F0FF"/>
+                    <stop offset="1" stop-color="#13007C"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>                    
+            </div>
+            <div class="tile color-2">
+                <h2>Add Fields Using An Iframe</h2>
+                <p>Use E-Signs iframe functionality to generate envelopes.</p>
+                <button class="demo-button"  routerLink="/iframe-demo">
+                    View Demo
+                </button>
+            </div>
+        </div>
+        <div class="tile-row">
+            <div class="tile-icon color-1">
+                <svg width="111" height="148" viewBox="0 0 111 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M110.562 89.4625L74.3187 95.1375L95.525 138.369L76.0812 147.869L54.7499 104.231L29.3124 127.05V27.9438L110.562 89.4625ZM30.6124 21.3063L24.0999 24.55L14.4999 5.25626L21.0187 2.01251L30.6124 21.3063Z" fill="url(#paint0_linear_5_165)"/>
+                    <path d="M38.2062 0L45.4062 1.08125L42.1999 22.3875L34.9999 21.3063L38.2062 0Z" fill="url(#paint1_linear_5_165)"/>
+                    <path d="M22.4063 28.4562L18.925 34.85L0 24.55L3.48125 18.1562L22.4063 28.4562Z" fill="url(#paint2_linear_5_165)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_5_165" x1="55.2812" y1="0" x2="55.2812" y2="147.869" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00F0FF"/>
+                    <stop offset="1" stop-color="#13007C"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_5_165" x1="55.2812" y1="0" x2="55.2812" y2="147.869" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00F0FF"/>
+                    <stop offset="1" stop-color="#13007C"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_5_165" x1="55.2812" y1="0" x2="55.2812" y2="147.869" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00F0FF"/>
+                    <stop offset="1" stop-color="#13007C"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>                    
+            </div>
+            <div class="tile color-3">
+                <h2>Click To Sign</h2>
+                <p>Using the API, generate and sign an envelope in one click.</p>
+                <button class="demo-button" routerLink="/click-to-sign-demo">
+                    View Demo
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="info-box-container">
         <div class="info-box">
-           <p>This site exists to demonstrate some of the potential uses of E-signs API and to show how E-sign could be integrated into your companies current infrastructure.</p>
-           <p>At E-sign we love developers so if you're a developer and you want to find out more regarding intergrating our API into your system, <a href="https://developer.v3.e-sign.co.uk/overview">check out our developer documentation.</a></p>
-        </div>
-
-        <div class="redirects">
-            <div class="redirect-tile" routerLink="/corporate-law">
-                <img src="./assets/building.png" alt="building">
-                <h1>Add Fields Using An Iframe</h1>
-                <p class="desc-text">Use E-signs iframe functionality to generate envelopes from your own site.</p>
-                <button class="redirect-button">Create Agreement Using Iframe</button>
-            </div>
-            <div class="redirect-tile" routerLink="/employment-law">
-                <img src="./assets/user-circle.png" alt="user-circle">
-                <h1>One Click Send And Sign</h1>
-                <p class="desc-text">Using the API, generate and sign an envelope in one click.</p>
-                <button class="redirect-button">Click To Sign Agreement</button>
-            </div>
-            <div class="redirect-tile" (click)="goToUrl()">
-                <img src="./assets/globe.png" alt="globe">
-                <h1>Use OAuth 2 To Get Data</h1>
-                <p class="desc-text">Retrieve account data using E-signs OAuth functionality.</p>
-                <button class="redirect-button" (click)="goToUrl()">Sign In With OAuth</button>
+            <svg width="222" height="222" viewBox="0 0 222 222" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="111" cy="111" r="111" fill="white"/>
+                <ellipse cx="111.735" cy="110.265" rx="102.914" ry="102.914" fill="url(#paint0_linear_5_105)"/>
+                <path d="M210.014 149.526C201.749 154.328 191.324 158.836 183.354 152.052C174.486 144.533 178.639 134.195 181.684 126.632C185.318 117.601 185.809 114.575 182.077 111.947C177.867 108.907 166.123 121.698 157.606 131.038C143.392 146.604 128.687 162.713 116.142 152.757C114.729 151.684 113.551 150.307 112.687 148.719C111.823 147.131 111.294 145.369 111.133 143.549C110.165 132.477 122.148 118.717 134.832 104.164C143.742 93.8841 154.841 81.1961 154.477 75.4102C154.485 75.1283 154.429 74.8485 154.315 74.5933C154.2 74.3381 154.03 74.1149 153.817 73.9417C145.118 65.9529 122.232 91.5638 105.534 110.287C99.7814 116.734 94.309 122.828 89.2015 128.042C77.1203 140.319 54.5153 155.826 38.3368 155.841C36.8053 155.848 35.2772 155.691 33.7765 155.371C31.1378 154.855 28.6698 153.639 26.6086 151.839C24.5474 150.039 22.962 147.716 22.004 145.091C13.9498 124.532 42.7007 103.694 43.9354 102.813L48.8184 110.317C42.0692 115.148 25.54 130.171 30.0301 141.655C30.4591 142.896 31.196 143.994 32.1652 144.838C33.1343 145.682 34.3007 146.241 35.5445 146.457C46.7698 148.895 69.6133 135.267 83.1539 121.492C88.1351 116.44 93.4952 110.42 99.178 104.046C121.446 79.0814 144.472 53.2796 159.514 67.069C160.603 68.0382 161.49 69.2324 162.117 70.5767C162.745 71.921 163.101 73.3866 163.162 74.8815C163.681 84.4709 153.27 96.4246 141.203 110.258C131.381 121.551 119.117 135.605 119.734 142.698C119.779 143.264 119.947 143.811 120.227 144.298C120.507 144.784 120.891 145.197 121.348 145.502C127.718 150.554 140.796 136.251 151.291 124.738C164.285 110.493 176.548 97.0414 186.918 104.428C197.287 111.815 192.783 122.359 189.64 130.171C186.399 138.248 185.332 142.095 188.784 145.018C192.867 148.483 200.009 145.253 210.238 138.909L210.014 149.526Z" fill="white"/>
+                <path d="M178.124 180.834L164.807 167.976L158.355 174.195L147.02 147.02L175.514 158.221L169.484 164.044L182.305 176.424L178.124 180.834Z" fill="white"/>
+                <defs>
+                <linearGradient id="paint0_linear_5_105" x1="111.735" y1="7.35095" x2="111.735" y2="213.179" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#42FDFF"/>
+                <stop offset="1" stop-color="#13007C"/>
+                </linearGradient>
+                </defs>
+                </svg>
+                
+            <div class="info">
+                <p>This site exists to demonstrate some of the potential uses of E-signs API and to show how E-sign could be integrated into your companies current infrastructure.</p>
+                <br>
+                <p>At E-sign we love developers so if you're a developer and you want to find out more regarding intergrating our API into your system, check out our developer documentation.</p>
             </div>
         </div>
-        <!-- <div class="more-info">
-            <h1>E-Sign - Legal Docs in a Jiffy</h1>
-            <div class="button-container">
-                <button>CONNECT YOUR APP</button>
-                <button class="alternate-button">FIND OUT MORE</button>
-            </div>
-            <p>Legal stuff goes here</p>
-        </div> -->
     </div>
-    <!-- <div class="tile-container">
-        <a href="https://www.e-sign.co.uk/contact-us/" class="tile bg-light-blue alt">
-            <h2 class="text-dark-blue">Contact our team</h2>
-            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M16.835 0c-1.656 0-3 1.344-3 2.999s1.344 2.999 3 2.999c1.655 0 3-1.344 3-2.999s-1.345-2.999-3-2.999m0 1c1.103 0 2 .896 2 1.999 0 1.103-.897 2-2 2s-2-.897-2-2 .897-1.999 2-1.999m-9.669-1c-1.656 0-3 1.344-3 2.999s1.344 2.999 3 2.999c1.655 0 3-1.344 3-2.999s-1.345-2.999-3-2.999m0 1c1.103 0 2 .896 2 1.999 0 1.103-.897 2-2 2s-2-.897-2-2 .897-1.999 2-1.999m9.648 14.828c.694 0 1.231.524 1.277 1.245.05.741.172 2.201.28 3.489l.156 1.896c.02.251.164.542.508.542.404 0 .455-.425.46-.556l.472-11.447c.022-.512.701-.655.937-.222l1.645 2.977c.118.215.451.125.451-.117l-1.6-5.675c-.093-.335-.402-.567-.749-.567h-17.303c-.346 0-.655.232-.749.566l-1.59 5.61c-.022.402.364.326.442.183l1.645-2.977c.244-.439.916-.283.937.222l.471 11.448c.011.256.146.555.49.555.329 0 .497-.271.518-.541l.16-1.94c.107-1.277.227-2.712.277-3.448.047-.719.584-1.243 1.277-1.243.584 0 1.218.465 1.27 1.244.049.734.169 2.169.276 3.446l.16 1.94c.019.251.161.542.499.542.382 0 .439-.389.446-.556.122-2.956.629-12.29.635-12.384.014-.266.233-.473.499-.473h1.963c.266 0 .485.208.499.474.006.094.494 9.427.617 12.384.012.276.174.555.509.555.344 0 .49-.291.508-.541l.165-1.982c.105-1.266.223-2.679.272-3.406.052-.778.687-1.243 1.27-1.243m2.222 8.172c-.807 0-1.44-.616-1.506-1.465-.035-.455-.092-1.143-.155-1.889-.108-1.294-.231-2.761-.282-3.507-.015-.231-.154-.311-.279-.311-.079 0-.256.078-.272.31-.049.731-.168 2.15-.274 3.422-.066.779-.126 1.502-.163 1.976-.065.848-.698 1.464-1.504 1.464-.826 0-1.474-.65-1.511-1.513-.106-2.567-.489-9.954-.591-11.9h-1.015c-.105 1.944-.502 9.333-.608 11.899-.038.892-.631 1.514-1.444 1.514-.803 0-1.432-.616-1.497-1.465l-.16-1.934c-.107-1.283-.228-2.724-.277-3.462-.016-.233-.194-.311-.272-.311-.125 0-.265.081-.279.309-.05.74-.171 2.182-.278 3.465l-.16 1.934c-.065.848-.702 1.464-1.513 1.464-.827 0-1.453-.637-1.491-1.513l-.398-9.665-.78 1.413c-.323.584-1.088.781-1.573.538-.46-.195-.754-.637-.754-1.138 0-.115.016-.229.047-.339l1.59-5.609c.215-.762.919-1.294 1.711-1.294h17.303c.793 0 1.497.533 1.712 1.294l1.59 5.61c.031.109.047.223.047.338 0 .503-.297.947-.759 1.14l-.037.017c-.566.218-1.238-.028-1.53-.558l-.781-1.412-.398 9.664c-.038.892-.638 1.514-1.459 1.514"/></svg>
-        </a>
-        <a href="https://e-sign.co.uk/enterprise-business/" class="tile bg-blue-gradient">
-            <h2>Learn more about Enterprise</h2>
-            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 2h2v2h2v3.702l7 2.618v12.68h1v1h-24v-1h1v-11h6v-8h2v-2h2v-2h1v2zm3 3h-7v18h1v-2h5v2h1v-18zm-2 17h-3v1h3v-1zm8 1h1v-11.987l-6-2.243v14.23h1v-2h4v2zm-14-10h-5v10h1v-2h3v2h1v-10zm-2 9h-1v1h1v-1zm15 0h-2v1h2v-1zm-16-5v2h-1v-2h1zm2 0v2h-1v-2h1zm5-10v12h-1v-12h1zm10 11v1h-4v-1h4zm-8-11v12h-1v-12h1zm8 9v1h-4v-1h4zm-17-2v2h-1v-2h1zm2 0v2h-1v-2h1zm15 0v1h-4v-1h4zm0-2v1h-4v-1h4zm-8-9h-3v1h3v-1z"/></svg>
-        </a>
-        <a href="https://developer.v3.e-sign.co.uk/overview" class="tile bg-dark-blue">
-            <h2>Developer guides and information</h2>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10.935v2.131l-8 3.947v-2.23l5.64-2.783-5.64-2.79v-2.223l8 3.948zm-16 3.848l-5.64-2.783 5.64-2.79v-2.223l-8 3.948v2.131l8 3.947v-2.23zm7.047-10.783h-2.078l-4.011 16h2.073l4.016-16z"/></svg>
-        </a>
-    </div> -->
+
+
 </div>

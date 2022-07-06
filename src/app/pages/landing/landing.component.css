@@ -1,245 +1,133 @@
+.content{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
 .hero{
     width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
+    height: 200px;
     margin-top: 80px;
-}
-.hero-img{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: relative;
-    z-index: 0;
-}
-.hero-img video {
-    min-width: 100%;
-    min-height: 100%;
-}
-.hero-img > img {
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.divider{
-    width: 100vw;
-    height: 20px;
-}
-
-.absolute-text{
-    position: absolute;
-    font-weight: 900;
-    font-size: 2.4em;
-    color: var(--light-blue);
-    width: 100%;
-    height: 100%;
-}
-
-.tile-container{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-.tile{
-    width: 33.33%;
-    height: 130px;
-    padding: 10px 0px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    color: #ffffff !important;
 }
-
-.tile h2, p {
-    color: #ffffff;
+.hero h1 {
+    font-size: 2.2em;
+    font-weight: 900;
     text-align: center;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+.redirect-buttons{
+    margin: 20px 0px;
 }
 
-a:hover {
-    color:#00A0C6; 
-    text-decoration:none; 
-    cursor:pointer;  
+.redirect-buttons button {
+    margin: 0px 10px;
+    border-radius: 20px;
 }
 
-.tile svg{
-    fill: #ffffff;
-    width: 15%;
-    height: auto;
-}
-
-.alt svg{
-    fill: var(--dark-blue) !important;
-}
-.main-content{
+.divider{
+    background: linear-gradient(89.7deg, #00F0FF 0.21%, #09164F 99.74%);
     width: 100%;
+    height: 15px;
+}
+
+.demo-tile-container{
+    width: 100vw;
+    padding: 10vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tile-row{
+    width: 80%;
+    display: flex;
+}
+
+.tile-icon{
+    width: 20%;
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin-top: 50px;
 }
 
-.redirects{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px 0px;
-    flex-wrap: wrap;
-}
-
-.redirect-tile{
-    width: 25%;
-    min-width: 350px;
-    min-height: 200px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    box-shadow: 20px 20px 60px #9f9f9f,
-    -20px -20px 60px #ffffff;
-    border-radius: 20px;
-    margin: 20px;
-}
-
-.redirect-tile h1 {
-    font-size: 1.4em;
-    font-weight: 600;
-}
-
-.redirect-tile p {
-    color: var(--dark-blue);
-}
-
-.more-info{
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 20px 0px;
-}
-
-.button-container{
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.e-sign-colors{
-    color: linear-gradient(180deg,#f0047f 13%,#13007c 100%);
-    display: flex;
-    align-items: center;
-}
-
-.inline-img{
+.tile-icon svg{
+    width: 100px;
     height: 100px;
-    padding: 10px;
 }
 
-@keyframes showTopText {
-  0% { transform: translate3d(0, 100%, 0); }
-  40%, 60% { transform: translate3d(0, 50%, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+.tile {
+    width: 80%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
 }
-@keyframes showBottomText {
-  0% { transform: translate3d(0, -100%, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+.tile h2 {
+    font-weight: 800;
+    font-size: 1.6em;
 }
-.animated-title {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
+.demo-button{
+    border-radius: 20px;
+    font-size: 1.3em;
+    align-self: flex-end;
 }
-.animated-title > div {
-  height: 50%;
-  overflow: hidden;
-  position: absolute;
-  width: 80%;
+
+.color-1{
+    background-color: #F6FEFF;
 }
-.animated-title > div div {
-  font-size: 2em;
-  padding: 2vmin 0;
-  position: absolute;
+.color-2{
+    background-color: #E4FDFF;
 }
-.animated-title > div div span {
-  display: block;
+.color-3{
+    background-color: #CCFCFF;
 }
-.animated-title > div.text-top {
-  border-bottom: 1vmin solid var(--light-blue);
-  top: 0;
-}
-.animated-title > div.text-top div {
-  animation: showTopText 1s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-  bottom: 0;
-  transform: translate(0, 100%);
-}
-.animated-title > div span {
-  color: #ffffff;
-}
-.animated-title > div.text-bottom {
-  bottom: 0;
-}
-.animated-title > div.text-bottom div {
-  animation: showBottomText 0.5s;
-  animation-delay: 1.75s;
-  animation-fill-mode: forwards;
-  top: 0;
-  transform: translate(0, -100%);
+
+.info-box-container{
+    padding: 60px 0;
+    width: 100vw;
+    height: auto;
+    background: linear-gradient(180deg, #FFFFFF 0%, #CCFCFF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    background-color: #ffffff;
-    border-radius: 20px;
     padding: 20px;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #F6FEFF;
+    border-radius: 20px;
 }
-.info-box > p{
-    padding: 20px 0px;
-    color: var(--dark-blue);
 
+.info-box svg {
+    width: 20%;
 }
 
-@media (max-width: 750px){
-    .tile h2{
-        font-size: 1em;
+.info{
+    width: 70%;
+}
+
+@media (max-width: 870px) {
+    .tile-icon{
         display: none;
     }
-    .tile p {
-        font-size: 0.6em;
-    }
-    .tile svg{
-        width: 30%;
-    }
-}
-
-@media (max-width: 436px) {
     .tile{
-        height: 60px;
+        width: 100vw;
     }
-    .redirect-tile{
-        min-width: 0px;
-        width: auto;
-        max-width: 95%;
-        text-align: center;
+    .demo-button{
+        margin-top: 10px;
+    }
+    .info-box svg {
+        display: none;
     }
 }

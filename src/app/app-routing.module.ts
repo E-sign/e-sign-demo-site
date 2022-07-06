@@ -8,9 +8,9 @@ import { EmploymentLawComponent } from "./pages/employment-law/employment-law.co
 
 const routes: Routes = [
   { path: 'landing', component: LandingComponent},
-  { path: 'corporate-law', component: CorprateLawComponent},
-  { path: 'international-law', component: InternationalLawComponent},
-  { path: 'employment-law', component: EmploymentLawComponent},
+  { path: 'iframe-demo', component: CorprateLawComponent},
+  { path: 'oauth-demo', component: InternationalLawComponent},
+  { path: 'click-to-sign-demo', component: EmploymentLawComponent},
   // redirects
   { path: '',   redirectTo: '/landing', pathMatch: 'full' },
 
