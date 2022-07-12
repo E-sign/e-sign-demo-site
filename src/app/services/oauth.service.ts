@@ -21,6 +21,14 @@ export class OauthService {
     api_key: environment.apiKey
   }
 
+  testOAuthData: any =  {
+    id: "0b3df1e6-3f98-4662-a249-a36a7f591704",
+  name: "Oauth testing",
+  redirect_uri: "https://localhost:9000/oauth-demo",
+  client_id: "JPls8IZKvxxruBojgbGXPLiW3iYUBDqxZmPKSzu2-Co",
+  client_secret: "pywUcJFaSrlcvH0Sfhch_9JscTNQfkAYxNLbY7yOQPM",
+  }
+
   ROOT_URL: string = "https://api.e-sign.co.uk/v3"
 
 
@@ -32,9 +40,9 @@ export class OauthService {
 
     let body = {
       grant_type: "authorization_code",
-      redirect_uri: "http://localhost:9000/international-law",
-      client_id: "vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6KsMrDdE",
-      client_secret: "ykIywcId71MaVwMINeVM3P2NvvTXHrPG67SAZcUd2os",
+      redirect_uri: this.testOAuthData.redirect_uri,
+      client_id: this.testOAuthData.client_id,
+      client_secret: this.testOAuthData.client_secret,
       code: code as string,
     }
 

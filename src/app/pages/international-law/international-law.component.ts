@@ -1,7 +1,5 @@
 import { OauthService } from './../../services/oauth.service';
 import { Component, OnInit } from '@angular/core';
-
-
 @Component({
   selector: 'app-international-law',
   templateUrl: './international-law.component.html',
@@ -27,7 +25,9 @@ export class InternationalLawComponent implements OnInit {
   displayDate: any;
 
   localUserData: any;
-  localDocumentData: any;
+  localDocumentData: any = {
+    files: []
+  };
   loaded: boolean = false
   dataPresent: boolean = false
 

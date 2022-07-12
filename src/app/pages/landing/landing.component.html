@@ -2,6 +2,11 @@
     <app-nav-bar></app-nav-bar>
     <div class="hero">
         <h1>&lt; E-Sign Example Integrations /&gt;</h1>
+        <div class="title-copy">
+            <p>Take a look at some integration examples of the E-Sign API</p>
+            <br>
+            <p>At E-sign we love developers so if you're a developer and you want to find out more regarding intergrating our API into your system,<br> check out our developer documentation.</p>
+        </div>
         <div class="redirect-buttons">
             <button>View Guides</button>
             <button>View API Reference</button>
@@ -24,8 +29,9 @@
             </div>
             <div class="tile color-1">
                 <h2>Adding OAuth 2.0</h2>
-                <p>Retrieve account data using E-signs OAuth functionality.</p>
-                <button class="demo-button"  routerLink="/oauth-demo">
+                <p>Use OAuth to securely get access to your users' data without them sharing their E-Sign password.</p>
+                <p>Explore how you can retrieve account data using E-signs OAuth functionality.</p>
+                <button class="demo-button"  (click)="goToUrl()">
                     View Demo
                 </button>
             </div>
@@ -44,7 +50,8 @@
             </div>
             <div class="tile color-2">
                 <h2>Add Fields Using An Iframe</h2>
-                <p>Use E-Signs iframe functionality to generate envelopes.</p>
+                <p>An inline frame (iframe) is a HTML element that loads another HTML page within the document. It essentially puts another webpage within the parent page. </p>                
+                <p>Use E-Signs iframe functionality to generate envelopes within your own webapp.</p>
                 <button class="demo-button"  routerLink="/iframe-demo">
                     View Demo
                 </button>
@@ -74,14 +81,14 @@
             </div>
             <div class="tile color-3">
                 <h2>Click To Sign</h2>
-                <p>Using the API, generate and sign an envelope in one click.</p>
+                <p>Using Templates, collect signer data then generate and sign an envelope in one click.</p>
                 <button class="demo-button" routerLink="/click-to-sign-demo">
                     View Demo
                 </button>
             </div>
         </div>
     </div>
-    <div class="info-box-container">
+    <!-- <div class="info-box-container">
         <div class="info-box">
             <svg width="222" height="222" viewBox="0 0 222 222" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="111" cy="111" r="111" fill="white"/>
@@ -97,12 +104,12 @@
                 </svg>
                 
             <div class="info">
-                <p>This site exists to demonstrate some of the potential uses of E-signs API and to show how E-sign could be integrated into your companies current infrastructure.</p>
+                <p>This site exists to demonstrate some of the potential uses of E-Signs API and to show how E-sign could be integrated into your companies current infrastructure.</p>
                 <br>
                 <p>At E-sign we love developers so if you're a developer and you want to find out more regarding intergrating our API into your system, check out our developer documentation.</p>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 </div>

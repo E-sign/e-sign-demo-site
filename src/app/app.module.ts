@@ -9,7 +9,6 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { EmploymentLawComponent } from './pages/employment-law/employment-law.component';
 import { InternationalLawComponent } from './pages/international-law/international-law.component';
 import { CorprateLawComponent } from './pages/corprate-law/corprate-law.component';
-import { SignatureModalComponent } from "./modals/signature-modal/signature-modal.component";
 import { SanitizerPipe } from './pipes/sanitizer.pipe';
 import { BytesPipe } from "./pipes/bytes.pipe";
 import { NavBarComponent } from './common/nav-bar/nav-bar.component';
@@ -21,7 +20,6 @@ import { NavBarComponent } from './common/nav-bar/nav-bar.component';
     EmploymentLawComponent,
     InternationalLawComponent,
     CorprateLawComponent,
-    SignatureModalComponent,
     SanitizerPipe,
     BytesPipe,
     NavBarComponent

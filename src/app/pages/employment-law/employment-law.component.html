@@ -1,12 +1,17 @@
 <div class="content">
     <app-nav-bar></app-nav-bar>
     <div class="status-page" *ngIf="currentPage == 'status'">
-        <h1 class="welcome">Welcome back</h1>
+        <h1 class="welcome">One Click Generate And Sign</h1>
+        <div class="info-box">
+            <p>This demo uses the API to generate an envelope from a template and sign the envelope in one action</p>
+            <p>This implementation can be used as a fast form where a user may need to immediatley fill in a document</p>
+            <p>An example use case could be a customer filling in a waiver before accessing an activity</p>
+            <p>The customer would be able to sign a document and recieve a signed copy of the document to their email quickly and easily</p>
+        </div>
         <div class="tile">
             <img src="./assets/doc.svg" alt="document">
-            <p>You have 1 document to sign</p>
-            <button (click)="openDocument()">Click to View</button>
-
+            <p>Fill in the form to continue</p>
+            <button (click)="openDocument()">View Form</button>
         </div>
         
       

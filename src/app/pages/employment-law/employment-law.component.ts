@@ -156,7 +156,7 @@ export class EmploymentLawComponent implements OnInit {
 
     } else {
       console.log('failed')
-      this.errorText = "There was an error with the fields, make sure they have all been completed correctly"
+      this.errorText = "There was an error with the fields, make sure they have all been filled in correctly"
       this.errorHidden = false
       this.hideSpinner = true
       this.loadingDocument = false
