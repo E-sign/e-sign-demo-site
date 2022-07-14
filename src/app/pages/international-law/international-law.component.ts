@@ -18,7 +18,7 @@ export class InternationalLawComponent implements OnInit {
     this.getUrlParamData()
   }
 
-  EsignLink: string = "https://app.e-sign.co.uk/#/authorize?client_id=Vuh5lYJ-i5zJIm5pST3Bu7pt3w400fOpVkACT7IY5ls&response_type=code&redirect_uri=http:%2F%2Flocalhost:9000%2Foauth-demo"
+  EsignLink: string = "https://app.e-sign.co.uk/#/authorize?client_id=vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6KsMrDdE&response_type=code&redirect_uri=https:%2F%2F/demo.e-sign.co.uk%2Foauth-demo"
   urlCode: string = "";
   token: string = "";
 
