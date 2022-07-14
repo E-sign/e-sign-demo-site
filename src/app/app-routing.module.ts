@@ -5,11 +5,13 @@ import { LandingComponent } from "./pages/landing/landing.component";
 import { CorprateLawComponent } from "./pages/corprate-law/corprate-law.component";
 import { InternationalLawComponent } from "./pages/international-law/international-law.component";
 import { EmploymentLawComponent } from "./pages/employment-law/employment-law.component";
+import { OauthRedirectComponent } from "./pages/oauth-redirect/oauth-redirect.component";
 
 const routes: Routes = [
   { path: 'landing', component: LandingComponent},
   { path: 'iframe-demo', component: CorprateLawComponent},
   { path: 'oauth-demo', component: InternationalLawComponent},
+  { path: 'oauth-redirect', component: OauthRedirectComponent},
   { path: 'click-to-sign-demo', component: EmploymentLawComponent},
   // redirects
   { path: '',   redirectTo: '/landing', pathMatch: 'full' },

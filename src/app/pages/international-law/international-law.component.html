@@ -2,6 +2,13 @@
 <div class="content">
     <div class="sign-in-page" *ngIf="loaded">
         <h1>Welcome {{localUserData.account.users[0].name}}</h1>
+        <div class="info-box">
+            <p>At this point you have been redirected to the speciefied redirect url, a code parameter has also been attached to the url string.</p>
+            <p>This code can be used to get a user token that can subsequently be used to make api calls on the users behalf.</p>
+            <p>In this example we are making a call for the users uploaded documents</p>
+            <p>For a full tutorial, please view our guides:</p>
+            <button><a href="https://developer.v3.e-sign.co.uk/guides/oauth-guide">View the guides</a></button>
+        </div>
         <div class="files-container">
             <div class="files" *ngIf="dataPresent;else noFiles">
                 <div class="file" *ngFor="let file of localDocumentData.files; index as i;">
@@ -14,11 +21,11 @@
             </div>
         </div>
         <ng-template #noFiles>
-            <p>No Files</p>
+            <p>No files attached to this account</p>
         </ng-template>
     </div>
 
     <div class="loading" *ngIf="loaded == false">
-
+        
     </div>
 </div>

@@ -3,7 +3,7 @@
     <div class="col-wrapper"  *ngIf="currentPage == 'form'">
         <div class="form-container">
             
-            <div class="upload">
+            <div class="upload" *ngIf="currentForm == 'upload'">
                 <h2>Upload documents</h2>
                 <p class="number">1</p>
                 <div class="options">
@@ -100,7 +100,7 @@
             </div>
     
            
-            <div class="add-signer-form">
+            <div class="add-signer-form" *ngIf="currentForm == 'signers'">
                 <h2>Add Signers</h2>
                 <p class="number">2</p>
                 <form class="form" [formGroup]="SignerDetails" (ngSubmit)="onAddSigner()">

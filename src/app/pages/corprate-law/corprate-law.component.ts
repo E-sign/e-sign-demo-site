@@ -24,6 +24,7 @@ export class CorprateLawComponent implements OnInit {
   }
 
   currentPage: string = 'form'
+  currentForm: string = 'upload'
   formNotComplete: boolean = true;
 
   errorText: string = '';
@@ -138,6 +139,7 @@ export class CorprateLawComponent implements OnInit {
             setTimeout(() => {
               this.documentUploaded = false;
               this.hideSpinner = true
+              this.currentForm = 'signers'
             }, 3000);
     }
 
@@ -263,44 +265,8 @@ export class CorprateLawComponent implements OnInit {
       }
   }
 
-  // mutationCallback(mutationsList: any, observer: any){
-  //   console.log('callback truggered')
-  //   for(const mutation of mutationsList){
-  //     console.log(mutation)
-  //     if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
-  //       console.log(mutation);
-  //       console.log('Old src: ', mutation.oldValue);
-  //       console.log('New src: ', mutation.target.src);
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
 
 
-  // observer = new MutationObserver(this.mutationCallback)
-  
-  // mutationConfig: any = {
-  //   attributes: true,
-  //   attributeFilter: ['src'],
-  //   attributeOldValue: true,
-  //   characterData: false,
-  //   characterDataOldValue: false,
-  //   childList: false,
-  //   subtree: true
-  // }
-  
-  // targetNode: any;
-  // tracking: boolean = false;
-
-  // setTargetNode(){
-  //   if(!this.tracking){
-  //     this.targetNode = document.querySelector('#target-iframe')!
-  //     this.observer.observe(this.targetNode, this.mutationConfig);
-  //     this.tracking = true;
-  //   }
-  // }
-  
   messageListener(){
     console.log('message event triggered')
   }

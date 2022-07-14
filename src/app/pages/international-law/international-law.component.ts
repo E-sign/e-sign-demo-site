@@ -1,5 +1,7 @@
 import { OauthService } from './../../services/oauth.service';
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-international-law',
   templateUrl: './international-law.component.html',
@@ -8,14 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class InternationalLawComponent implements OnInit {
 
   constructor(
-    private oAuthService: OauthService
+    private oAuthService: OauthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getUrlParamData()
   }
 
-  EsignLink: string = "https://app.e-sign.co.uk/#/authorize?client_id=vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6Ks[…]pe=code&redirect_uri=http://localhost:9000/international-law"
+  EsignLink: string = "https://app.e-sign.co.uk/#/authorize?client_id=Vuh5lYJ-i5zJIm5pST3Bu7pt3w400fOpVkACT7IY5ls&response_type=code&redirect_uri=http:%2F%2Flocalhost:9000%2Foauth-demo"
   urlCode: string = "";
   token: string = "";
 
@@ -32,30 +35,42 @@ export class InternationalLawComponent implements OnInit {
   dataPresent: boolean = false
 
   getUrlParamData(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    this.urlCode = urlParams.get('code') as string
-    this.getBearerToken()
+    try {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      this.urlCode = urlParams.get('code') as string
+      this.getBearerToken()
+    } catch (error) {
+      this.router.navigate(['/oauth-redirect'])
+    }
+   
   }
 
-  getBearerToken = async () => {
-    await this.oAuthService.GetToken(this.urlCode).subscribe(res => {
-      this.token = res.access_token
-      this.getUserData()
-    })
+  getBearerToken =  () => {
+    console.log('here')
+    try {
+       this.oAuthService.GetToken(this.urlCode).subscribe(res => {
+        this.token = res.access_token
+        this.getUserData()
+      },err => {
+        this.router.navigate(['oauth-redirect'])
+      })
+    } catch (error) {
+      this.router.navigate(['oauth-redirect'])
+    }
   }
 
-  async getUserData(){
-    await this.oAuthService.GetUser(this.token).subscribe(res => {
+   getUserData(){
+     this.oAuthService.GetUser(this.token).subscribe(res => {
       this.localUserData = res
       console.log(res)
       this.searchForAllDocuments()
     })
   }
 
-  async searchForAllDocuments(){
+   searchForAllDocuments(){
     let pageNumString = this.pageNumber.toString()
-    await this.oAuthService.GetAllDocuments(pageNumString, '24', '', '', this.token).subscribe(res =>{
+     this.oAuthService.GetAllDocuments(this.token).subscribe(res =>{
       this.localDocumentData = res
       this.loaded = true
       console.log(this.localDocumentData)

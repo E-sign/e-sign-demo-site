@@ -24,7 +24,7 @@ export class OauthService {
   testOAuthData: any =  {
     id: "0b3df1e6-3f98-4662-a249-a36a7f591704",
   name: "Oauth testing",
-  redirect_uri: "https://localhost:9000/oauth-demo",
+  redirect_uri: "http://localhost:9000/oauth-demo",
   client_id: "JPls8IZKvxxruBojgbGXPLiW3iYUBDqxZmPKSzu2-Co",
   client_secret: "pywUcJFaSrlcvH0Sfhch_9JscTNQfkAYxNLbY7yOQPM",
   }
@@ -53,18 +53,9 @@ export class OauthService {
   // == GET ALL DOCUMENTS ==
   // =======================
 
-  GetAllDocuments(page: string, per_page: string, date: string, search: string, token: string){
+  GetAllDocuments(token: string){
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-    if(date == '' && search == ''){
-      return this.http.get<any>(this.ROOT_URL + `/uploads/list/documents?page=${page}&per_page=${per_page}`, {headers})
-    } else if (date != "" && search == ""){
-      return this.http.get<any>(this.ROOT_URL + `/uploads/list/documents?page=${page}&per_page=${per_page}&date=${date}`, {headers}) 
-    } else if (date == "" && search != "") {
-      return this.http.get<any>(this.ROOT_URL + `/uploads/list/documents?page=${page}&per_page=${per_page}&search=${search}`, {headers}) 
-    } else {
-      return this.http.get<any>(this.ROOT_URL + `/uploads/list/documents?page=${page}&per_page=${per_page}&date=${date}&search=${search}`, {headers}) 
-    }
-
+    return this.http.get<any>(this.ROOT_URL + `/uploads/list/documents?page=1&per_page=9`, {headers})
   }
 
   // ==============

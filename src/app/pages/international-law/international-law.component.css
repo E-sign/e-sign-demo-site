@@ -11,6 +11,21 @@
     margin-top: 80px;
 }
 
+.info-box {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-box p {
+    padding: 10px 0px;
+}
+
+button a {
+    color: #ffffff;
+}
+
 h1{
     margin: 20px 0px;
 }
@@ -45,7 +60,7 @@ input{
 }
 
 .file{
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,18 +85,8 @@ input{
     box-shadow: 5px 5px 10px 5px #e6e5e5;
 }
 
-@media (min-width: 1000px){
-    .file{
-        width: 25%;
-    }
-}
 @media (max-width: 600px){
     .file{
         width: 50% !important;
-    }
-}
-@media (max-width: 1000px){
-    .file{
-        width: 33.33%;
     }
 }

@@ -1,0 +1,11 @@
+<div class="content">
+    <app-nav-bar></app-nav-bar>
+    <div class="explaination">
+        <h2>OAuth Process</h2>
+        <p>The call to action button below will redirect you to the E-Sign OAuth login page</p>
+        <p>A link to E-signs authorization page can be constructed in the following format:</p>
+        <p>https://app.e-sign.co.uk/?response_type=code&client_id=[CLIENT_ID]&redirect_uri=[REDIRECT_URI]</p>
+        <p>Following a successful log in request the user will be redirected to the speciefied redirect url</p>
+        <button (click)="goToUrl()">Redirect to E-Sign</button>
+    </div>
+</div>

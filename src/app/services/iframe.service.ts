@@ -20,7 +20,7 @@ export class IframeService {
     redirect_uri: "http://localhost:9000/international-law",
     client_id: "vxze34ES4kq-ELbkNjHIZe-lA48TrRLoYjQ6KsMrDdE",
     client_secret: "ykIywcId71MaVwMINeVM3P2NvvTXHrPG67SAZcUd2os",
-    api_key: environment.demoApiKey
+    api_key: environment.apiKey
   }
 
   UploadDocuments(body: any){
